@@ -1,5 +1,5 @@
 from flask import render_template
-from mojibake import app, pages
+from app import app, pages
 
 
 @app.route('/')
@@ -15,4 +15,4 @@ def page(path):
     # `path` is the filename of a page, without the file extension
     # e.g. "first-post"
     page = pages.get_or_404(path)
-    return render_template('page.html', page=page)
+    return render_template('post.html', page=page)
