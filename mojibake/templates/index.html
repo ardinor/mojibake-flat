@@ -1,0 +1,6 @@
+{% for page in pages %}
+    <a href="{{ page.path }}">
+        {{ page.title }}
+    </a>
+    <small>{{ page.date }}</small>
+{% endfor %}

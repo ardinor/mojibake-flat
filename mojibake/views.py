@@ -8,11 +8,12 @@ def home():
     # Sort pages by date
     sorted_posts = sorted(posts, reverse=True,
         key=lambda page: page.meta['date'])
-    return render_template('index.html', pages=sorted_posts)
+    return render_template('index.html', pages=sorted_posts[:10])
 
 @app.route('/<path:path>/')
 def page(path):
     # `path` is the filename of a page, without the file extension
     # e.g. "first-post"
     page = pages.get_or_404(path)
-    return render_template('post.html', page=page)
+    template = page.meta.get('template', 'post.html')
+    return render_template(template, page=page)
