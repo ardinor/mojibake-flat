@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="https://github.com/ardinor">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% assets "css_all" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css">
+    {% endassets %}
+  </head>
+  <body>
+    <div class="container">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/posts">Posts</a>
+          </li>
+        </ul>
+    {% block content %}{% endblock %}
+
+    {% assets "js_all" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    </div>
+  </body>
+</html>

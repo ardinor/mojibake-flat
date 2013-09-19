@@ -1,6 +1,11 @@
-{# {% extends "base.html" %}
-{% block content %}#}
+{% extends "base.html" %}
+
+{% block title %}{{ page.meta.title }}{% endblock %}
+
+{% block content %}
+
 <h1>{{ page.meta.title }}</h1>
 <p>{{ page.meta.date }}</p>
 {{ page }}
-{# {% endblock %}  #}
+
+{% endblock %}
