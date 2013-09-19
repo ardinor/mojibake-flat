@@ -1,5 +1,13 @@
 from flask import render_template
-from app import app, pages
+from app import app, pages, freezer
+
+
+# From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
+@freezer.register_generator
+def pages_url_generator():
+    all_pages = [p for p in pages]
+    for page in all_pages:
+        yield 'page', {'path': page.path}
 
 
 @app.route('/')
