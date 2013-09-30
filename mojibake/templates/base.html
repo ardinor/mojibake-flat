@@ -12,15 +12,29 @@
   </head>
   <body>
     <div class="container">
-        <ul class="nav nav-tabs">
-          <li class="active" id="home_tab">
-            <a href="/">Home</a>
-          </li>
-          <li id="posts_tab">
-            <a href="/">Posts</a>
-          </li>
-        </ul>
-    {% block content %}{% endblock %}
+      <div class="row">
+
+        <div class="col-lg-10 bg-white">
+
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-lg-2 text-center">
+
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active" id="home_tab">
+              <a href="/"><h4>Defestri</h4></a>
+            </li>
+            <li id="about_tab">
+              <a href="/about">About</a>
+            </li>
+            <li id="posts_tab">
+              <a href="/posts">Posts</a>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
 
     {% assets "js_all" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>

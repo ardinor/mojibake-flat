@@ -1,5 +1,5 @@
 body {
-    padding-top: 40px;
+    padding-top: 30px;
     padding-bottom: 40px;
     background-color: #6699A1;
 }
@@ -10,6 +10,21 @@ body, html {
 
 .container {
     height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    /*margin-left: 10px;
+    margin-right: 0px; */
+
+}
+
+.bg-white {
     background-color: white;
 }
 
+.nav-stacked a {
+    color: white;
+}
+
+.nav-stacked h4 {
+    color:white;
+}
