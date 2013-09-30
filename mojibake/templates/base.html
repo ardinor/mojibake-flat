@@ -17,6 +17,7 @@
         <div class="col-lg-10 bg-white">
 
           {% block content %}{% endblock %}
+
         </div>
         <div class="col-lg-2 text-center">
 
@@ -30,15 +31,24 @@
             <li id="posts_tab">
               <a href="/posts">Posts</a>
             </li>
+            <li>
+              <a href="https://github.com/ardinor"><img src="/static/img/GitHub-Mark-32px.png"/></a>
+            </li>
           </ul>
-
-
         </div>
       </div>
 
+      <hr>
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Built using <a href="https://github.com/ardinor/mojibake-flat">Mojibake-Flat</a><span class="pull-right">MMXIII</span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
     {% assets "js_all" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
-    </div>
   </body>
 </html>

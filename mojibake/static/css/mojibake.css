@@ -26,5 +26,19 @@ body, html {
 }
 
 .nav-stacked h4 {
-    color:white;
+    color: white;
+}
+
+footer {
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.post-divider {
+    border: 1px solid #0089A7;
+    width: 50%;
 }
