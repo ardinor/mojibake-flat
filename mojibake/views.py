@@ -45,3 +45,7 @@ def page(path):
     page = pages.get_or_404(path)
     template = page.meta.get('template', 'post.html')
     return render_template(template, page=page)
+
+@app.errorhandler(404)
+def internal_error(error):
+    return render_template('404.html'), 404

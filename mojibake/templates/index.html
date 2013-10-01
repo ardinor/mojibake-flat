@@ -9,6 +9,9 @@
         <h2>{{ page.title }}</h2>
     </a>
     Posted on: <small>{{ page.date }}</small>
+    {% if 'category' in page.meta.keys() %}
+        <span class="pull-right">{% for i in page.meta['category'].split(', ') %}<a href="/categories/{{ i }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
+    {% endif %}
     <p>
         {{ page }}
     </p>
