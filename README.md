@@ -1,4 +1,4 @@
-Turn Mojibake into a flat file blog using Flask, Flask-FlatPages and Frozen-Flask
+Turn Mojibake into a flat file blog using Flask, Flask-FlatPages and Frozen-Flask. Python 2.7.3.
 
 The Frozen files are in the frozen directory.
 

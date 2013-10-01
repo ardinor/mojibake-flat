@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Defestri{% endblock %}
+{% block title %}Defestri - Posts{% endblock %}
 
 {% block content %}
-<h1 class="text-center">Defestri</h1>
+<h1 class="text-center">Posts</h1>
 {% for page in pages %}
-    <a href="{{ page.path }}">
+    <a href="{{ page.path.replace('posts/', '', 1) }}">
         <h2>{{ page.title }}</h2>
     </a>
     Posted on: <small>{{ page.date }}</small>

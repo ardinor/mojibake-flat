@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Defestri - About</title>
     <meta name="description" content="">
     <meta name="author" content="https://github.com/ardinor">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% assets "css_all" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css">
-    {% endassets %}
+    
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    
+    <link rel="stylesheet" href="/static/css/mojibake.css" type="text/css">
+    
   </head>
   <body>
     <div class="container">
@@ -16,7 +18,10 @@
 
         <div class="col-lg-10 bg-white">
 
-          {% block content %}{% endblock %}
+          
+<h1>About</h1>
+
+
 
         </div>
         <div class="col-lg-2 text-center">
@@ -53,8 +58,12 @@
         </div>
       </footer>
     </div>
-    {% assets "js_all" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="/static/js/mojibake.js"></script>
+    
   </body>
 </html>

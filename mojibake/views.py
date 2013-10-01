@@ -22,13 +22,21 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/archive/')
+def archive():
+    return render_template('archive.html')
+
+@app.route('/categories/')
+def categories():
+    return render_template('categories.html')
+
 @app.route('/posts/')
 def posts():
     posts = [page for page in pages if 'date' in page.meta]
     # Sort pages by date
     sorted_posts = sorted(posts, reverse=True,
         key=lambda page: page.meta['date'])
-    return render_template('index.html', pages=sorted_posts[:10])
+    return render_template('posts.html', pages=sorted_posts[:10])
 
 @app.route('/<path:path>/')
 def page(path):

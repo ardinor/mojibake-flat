@@ -14,4 +14,14 @@ $(function() {
         $('li.active').removeClass();
         $('#about_tab').addClass('active');
     }
+    if (window.location.pathname.indexOf("archive") !== -1)
+    {
+        $('li.active').removeClass();
+        $('#archive_tab').addClass('active');
+    }
+    if (window.location.pathname.indexOf("categories") !== -1)
+    {
+        $('li.active').removeClass();
+        $('#categories_tab').addClass('active');
+    }
 });
