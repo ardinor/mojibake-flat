@@ -4,5 +4,7 @@
 
 {% block content %}
 <h1 class="text-center">Categories</h1>
-
+{% for i, j in categories.iteritems() %}
+<h3><a href="">{{ i }} - {{ j }}</a></h3>
+{% endfor %}
 {% endblock %}

@@ -1,4 +1,5 @@
 from flask import render_template
+from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer
 
 
@@ -28,7 +29,17 @@ def archive():
 
 @app.route('/categories/')
 def categories():
-    return render_template('categories.html')
+    posts = [page for page in pages if 'category' in page.meta]
+    categories = {}
+    for i in posts:
+        for j in page.meta['category'].split(', '):
+            if j in categories.keys():
+                categories[j] += 1
+            else:
+                categories[j] = 1
+            #categories.append(j)
+    #categories = sorted(categories)
+    return render_template('categories.html', categories=categories)
 
 @app.route('/posts/')
 def posts():
@@ -45,6 +56,10 @@ def page(path):
     page = pages.get_or_404(path)
     template = page.meta.get('template', 'post.html')
     return render_template(template, page=page)
+
+@app.route('/pygments.css')
+def pygments_css():
+    return pygments_style_defs('autumn'), 200, {'Content-Type': 'text/css'}
 
 @app.errorhandler(404)
 def internal_error(error):
