@@ -5,7 +5,7 @@
 {% block content %}
 
 <h2>{{ page.meta.title }}</h2>
-<p>{{ page.meta.date }}</p>
+<p>{{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em></p>
 {{ page }}
 
 {% endblock %}

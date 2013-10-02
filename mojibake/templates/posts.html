@@ -8,7 +8,7 @@
     <a href="{{ page.path.replace('posts/', '', 1) }}">
         <h2>{{ page.title }}</h2>
     </a>
-    Posted on: <small>{{ page.date }}</small>
+    Posted on: {{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em>
     <p>
         {{ page }}
     </p>
