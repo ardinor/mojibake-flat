@@ -37,6 +37,8 @@ def categories():
     with open(category_file, 'r') as f:
         categories = f.readline()
     categories = ast.literal_eval(categories)
+    for i in categories.keys():
+        categories[i] = len(categories[i])
     # posts = [page for page in pages if 'category' in page.meta]
     # categories = {}
     # for i in posts:
@@ -56,7 +58,8 @@ def category_name(name):
         categories = f.readline()
     categories = ast.literal_eval(categories)
     if name in categories.keys():
-        return render_template('category_list', posts=posts)
+        return render_template('category_list.html', name=name,
+                               posts=categories[name])
     else:
         abort(404)
 

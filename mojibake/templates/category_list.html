@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Defestri - {{ name }}{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Posts tagged '{{ name }}'</h1>
+{% for i in posts %}
+<h3><a href="{{ url_for('page', path='/{}'.format(i)) }}">{{ i }}</a></h3>
+{% endfor %}
+{% endblock %}
