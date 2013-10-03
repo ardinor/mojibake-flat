@@ -1,7 +1,10 @@
-from flask import render_template
+from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer
+from settings import APP_DIR
 
+import os
+import ast
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
 @freezer.register_generator
@@ -29,17 +32,33 @@ def archive():
 
 @app.route('/categories/')
 def categories():
-    posts = [page for page in pages if 'category' in page.meta]
-    categories = {}
-    for i in posts:
-        for j in page.meta['category'].split(', '):
-            if j in categories.keys():
-                categories[j] += 1
-            else:
-                categories[j] = 1
-            #categories.append(j)
-    #categories = sorted(categories)
+    #gen_dir = os.path.join(APP_DIR, 'gen')
+    category_file = os.path.join(APP_DIR, 'gen/categories.md')
+    with open(category_file, 'r') as f:
+        categories = f.readline()
+    categories = ast.literal_eval(categories)
+    # posts = [page for page in pages if 'category' in page.meta]
+    # categories = {}
+    # for i in posts:
+    #     for j in page.meta['category'].split(', '):
+    #         if j in categories.keys():
+    #             categories[j] += 1
+    #         else:
+    #             categories[j] = 1
+    #         #categories.append(j)
+    # #categories = sorted(categories)
     return render_template('categories.html', categories=categories)
+
+@app.route('/categories/<name>')
+def category_name(name):
+    category_file = os.path.join(APP_DIR, 'gen/categories.md')
+    with open(category_file, 'r') as f:
+        categories = f.readline()
+    categories = ast.literal_eval(categories)
+    if name in categories.keys():
+        return render_template('category_list', posts=posts)
+    else:
+        abort(404)
 
 @app.route('/posts/')
 def posts():

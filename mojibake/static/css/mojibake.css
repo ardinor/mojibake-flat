@@ -42,5 +42,17 @@ footer a {
 .post-divider {
     /* 新橋 */
     border: 1px solid #0089A7;
+    width: 90%;
+}
+
+pre {
+    background-color: #FAFAFA;
+}
+
+/* maybe remove this */
+.hr {
+    /* 籐黄 */
+    border: 1px solid #FFC408;
     width: 50%;
 }
+
