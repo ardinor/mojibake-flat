@@ -29,3 +29,6 @@ def build_gen_files():
 
     with open(os.path.join(gen_dir, 'categories.md'), 'w+') as f:
         f.write(str(categories))
+
+if __name__ == '__main__':
+    build_gen_files()

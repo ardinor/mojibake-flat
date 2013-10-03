@@ -27,19 +27,19 @@
 
           <ul class="nav nav-pills nav-stacked">
             <li class="active" id="home_tab">
-              <a href="/"><h4>Defestri</h4></a>
+              <a href="{{ url_for('home') }}"><h4>Defestri</h4></a>
             </li>
             <li id="about_tab">
-              <a href="/about">About</a>
+              <a href="{{ url_for('about') }}">About</a>
             </li>
             <li id="posts_tab">
-              <a href="/posts">Posts</a>
+              <a href="{{ url_for('posts') }}">Posts</a>
             </li>
             <li id="categories_tab">
-              <a href="/categories">Categories</a>
+              <a href="{{ url_for('categories') }}">Categories</a>
             </li>
             <li id="archive_tab">
-              <a href="/archive">Archive</a>
+              <a href="{{ url_for('archive') }}">Archive</a>
             </li>
             <li>
               <a href="https://github.com/ardinor"><img alt="Link to my Github" title="My Github" src="/static/img/GitHub-Mark-32px.png"/></a>

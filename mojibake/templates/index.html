@@ -5,12 +5,12 @@
 {% block content %}
 <h1 class="text-center">Defestri</h1>
 {% for page in pages %}
-    <a href="{{ page.path }}">
+    <a href="{{ url_for('page', path=page.path) }}">
         <h2>{{ page.title }}</h2>
     </a>
     {{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em>
     {% if 'category' in page.meta.keys() %}
-        <span class="pull-right">{% for i in page.meta['category'].split(', ') %}<a href="/categories/{{ i }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
+        <span class="pull-right">{% for i in page.meta['category'].split(', ') %}<a href="{{ url_for('category_name', name=i) }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
     {% endif %}
     <p>
         {{ page }}
