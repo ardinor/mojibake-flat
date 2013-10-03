@@ -1,1 +1,0 @@
-{'test': ['posts/test', 'posts/test2'], 'test2': ['posts/test']}
