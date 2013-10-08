@@ -32,7 +32,6 @@ def archive():
 
 @app.route('/categories/')
 def categories():
-    #gen_dir = os.path.join(APP_DIR, 'gen')
     category_file = os.path.join(APP_DIR, 'gen/categories.md')
     with open(category_file, 'r') as f:
         categories = f.readline()
