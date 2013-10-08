@@ -5,6 +5,8 @@ from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 from flask.ext.assets import Environment, Bundle
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
 
 from moment_js import moment_js
 
@@ -13,6 +15,10 @@ app.config.from_pyfile('settings.py')
 pages = FlatPages(app)
 freezer = Freezer(app)
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 app.jinja_env.globals['moment_js'] = moment_js
 
