@@ -25,3 +25,6 @@ FREEZER_REMOVE_EXTRA_FILES = False # IMPORTANT: If this is True, all app files
 FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite']
 FLATPAGES_ROOT = os.path.join(APP_DIR, 'content')
 FLATPAGES_EXTENSION = '.md'
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(APP_DIR, 'app.db')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(APP_DIR, 'db_repository')

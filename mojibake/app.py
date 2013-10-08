@@ -4,6 +4,7 @@ from flask import Flask
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 from flask.ext.assets import Environment, Bundle
+from flask.ext.sqlalchemy import SQLAlchemy
 
 from moment_js import moment_js
 
@@ -11,6 +12,7 @@ app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 pages = FlatPages(app)
 freezer = Freezer(app)
+db = SQLAlchemy(app)
 
 app.jinja_env.globals['moment_js'] = moment_js
 
