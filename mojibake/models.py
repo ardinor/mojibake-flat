@@ -1,6 +1,6 @@
 from app import db
 
-class Posts(db.Model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), index=True)
     path = db.Column(db.String(240), index=True)

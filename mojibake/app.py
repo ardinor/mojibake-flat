@@ -18,10 +18,11 @@ freezer = Freezer(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+from mojibake import models
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-manager.add_command('manage_db', ManageMetaDB(db, pages))
+manager.add_command('manage_db', ManageMetaDB(db, pages, models.Post))
 
 app.jinja_env.globals['moment_js'] = moment_js
 
