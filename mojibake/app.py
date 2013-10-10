@@ -9,7 +9,7 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
 from moment_js import moment_js
-from manage_db import ManageCategories
+from manage_db import ManageMetaDB
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
@@ -18,9 +18,10 @@ freezer = Freezer(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-manager.add_command('manage_db', ManageCategories(db))
+manager.add_command('manage_db', ManageMetaDB(db, pages))
 
 app.jinja_env.globals['moment_js'] = moment_js
 
