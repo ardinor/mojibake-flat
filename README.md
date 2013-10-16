@@ -19,6 +19,10 @@ Appliy migration
 After every database model change run `migrate` and `upgrade` again
 
 
+Maybe use the editor like in Ghost?
+The Editor is http://codemirror.net/ . It then uses https://github.com/coreyti/showdown to convert the markdown to HTML, and jQuery with a simple cross-multiplication of content height (editor & preview) to adjust the the scroll on the other panel.
+http://www.reddit.com/r/javascript/comments/1ofhos/nodejsbased_blogging_app_ghost_has_launched_today/ccrnd6i
+
 Using examples from here
 
 http://www.stevenloria.com/hosting-static-flask-sites-for-free-on-github-pages/
