@@ -13,7 +13,7 @@ class ManageMetaDB(Command):
     def run(self):
         posts = [page for page in self.pages if 'date' in page.meta]
         for page in posts:
-            db_page = self.Post.query.filter_by(title=page.meta['title']).first()
+            db_page = self.Post.query.filter_by(path=page.path).first()
             if db_page is None:
                 db_page = self.Post(title=page.meta['title'], path=page.path,
                                date=page.meta['date'],
@@ -21,7 +21,21 @@ class ManageMetaDB(Command):
                 self.db.session.add(db_page)
                 self.db.session.commit()
             else:
-                pass
+                changed = False
+                if db_page.title != page.meta['title']:
+                    db_page.title = page.meta['title']
+                    changed = True
+                if db_page.date != page.meta['date']:
+                    db_page.date = page.meta['date']
+                    changed = True
+                if db_page.categories !=  page.meta['category']:
+                    db_page.categories = page.meta['category']
+                    changed = True
+                if changed:
+                    self.db.session.commit()
+
+
+
                 #check and update if necessary here
         # posts = os.path.join(FLATPAGES_ROOT, 'posts')
         # categories = {}

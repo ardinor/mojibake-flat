@@ -1,6 +1,6 @@
 from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
-from app import app, pages, freezer
+from app import app, pages, freezer, db
 from settings import APP_DIR
 
 import os
@@ -32,12 +32,8 @@ def archive():
 
 @app.route('/categories/')
 def categories():
-    category_file = os.path.join(APP_DIR, 'gen/categories.md')
-    with open(category_file, 'r') as f:
-        categories = f.readline()
-    categories = ast.literal_eval(categories)
-    for i in categories.keys():
-        categories[i] = len(categories[i])
+
+    # category_file = os.path.join(APP_DIR, 'gen/categories.md')
     # posts = [page for page in pages if 'category' in page.meta]
     # categories = {}
     # for i in posts:
