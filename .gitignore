@@ -168,4 +168,4 @@ pip-log.txt
 
 frozen/
 gen/
-.db
+*.db
