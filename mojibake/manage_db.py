@@ -5,16 +5,22 @@ from flask.ext.script import Command
 
 class ManageMetaDB(Command):
 
-    def __init__(self, db, pages, Post):
+    def __init__(self, db, pages, Post, Category):
         self.db = db
         self.pages = pages
         self.Post = Post
+        self.Category = Category
 
     def run(self):
         posts = [page for page in self.pages if 'date' in page.meta]
         for page in posts:
+            print page.path
             db_page = self.Post.query.filter_by(path=page.path).first()
             if db_page is None:
+                print page.meta['title']
+                print page.meta['date']
+                print page.meta['category']
+                db_cat = self.
                 db_page = self.Post(title=page.meta['title'], path=page.path,
                                date=page.meta['date'],
                                categories=page.meta['category'])

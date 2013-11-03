@@ -1,12 +1,12 @@
 from app import db
 
-category_post = db.Table('category_post',
+categories = db.Table('categories',
                          db.Column('post_id',
                             db.Integer,
-                            db.ForeignKey('Post.id')),
+                            db.ForeignKey('post.id')),
                          db.Column('category_id',
                             db.Integer,
-                            db.ForeignKey('Category.id')))
+                            db.ForeignKey('category.id')))
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,8 +14,8 @@ class Post(db.Model):
     path = db.Column(db.String(240), index=True)
     date = db.Column(db.DateTime)
     #categories = db.Column(db.String(120))
-    categories = db.relationship('Category', secondary=category_post,
-                                 backref=db.backref('Post',
+    categories = db.relationship('Category', secondary=categories,
+                                 backref=db.backref('posts',
                                                     lazy='dynamic'))
 
     def __repr__(self):
