@@ -20,10 +20,29 @@ class ManageMetaDB(Command):
                 print page.meta['title']
                 print page.meta['date']
                 print page.meta['category']
-                db_cat = self.
+                categories = []
+                if isinstance(page.meta['category'], list):
+                    for i in page.meta['category']:
+                        db_cat = self.Category.query.filter_by(name=i).first()
+                        if db_cat is None:
+                            db_cat = self.Category(i)
+                            self.db.session.add(db_cat)
+                            self.db.session.commit()
+                            categories.append(db_cat)
+                        else:
+                            categories.append(db_cat)
+                else:
+                    db_cat = self.Category.query.filter_by(name=page.meta['category']).first()
+                    if db_cat is None:
+                        db_cat=self.Category(page.meta['category'])
+                        self.db.session.add(db_cat)
+                        self.db.session.commit()
+                        categories.append(db_cat)
+                    else:
+                        categories.append(db_cat)
                 db_page = self.Post(title=page.meta['title'], path=page.path,
                                date=page.meta['date'],
-                               categories=page.meta['category'])
+                               categories=categories)
                 self.db.session.add(db_page)
                 self.db.session.commit()
             else:
