@@ -17,29 +17,27 @@ class ManageMetaDB(Command):
             print page.path
             db_page = self.Post.query.filter_by(path=page.path).first()
             if db_page is None:
-                print page.meta['title']
-                print page.meta['date']
-                print page.meta['category']
                 categories = []
-                if isinstance(page.meta['category'], list):
-                    for i in page.meta['category']:
+                split_cat = page.meta['category'].split(', ')
+                if isinstance(split_cat, list):
+                    for i in split_cat:
                         db_cat = self.Category.query.filter_by(name=i).first()
                         if db_cat is None:
-                            db_cat = self.Category(i)
+                            db_cat = self.Category(name=i)
                             self.db.session.add(db_cat)
                             self.db.session.commit()
                             categories.append(db_cat)
                         else:
                             categories.append(db_cat)
-                else:
-                    db_cat = self.Category.query.filter_by(name=page.meta['category']).first()
-                    if db_cat is None:
-                        db_cat=self.Category(page.meta['category'])
-                        self.db.session.add(db_cat)
-                        self.db.session.commit()
-                        categories.append(db_cat)
-                    else:
-                        categories.append(db_cat)
+                # else:
+                #     db_cat = self.Category.query.filter_by(name=page.meta['category']).first()
+                #     if db_cat is None:
+                #         db_cat = self.Category(name=page.meta['category'])
+                #         self.db.session.add(db_cat)
+                #         self.db.session.commit()
+                #         categories.append(db_cat)
+                #     else:
+                #         categories.append(db_cat)
                 db_page = self.Post(title=page.meta['title'], path=page.path,
                                date=page.meta['date'],
                                categories=categories)
@@ -47,15 +45,19 @@ class ManageMetaDB(Command):
                 self.db.session.commit()
             else:
                 changed = False
+                print db_page.categories
+                split_cat = page.meta['category'].split(', ')
+                print split_cat
                 if db_page.title != page.meta['title']:
                     db_page.title = page.meta['title']
                     changed = True
                 if db_page.date != page.meta['date']:
                     db_page.date = page.meta['date']
                     changed = True
-                if db_page.categories !=  page.meta['category']:
-                    db_page.categories = page.meta['category']
-                    changed = True
+                #fix this bit up
+                #if db_page.categories !=  page.meta['category']:
+                #    db_page.categories = page.meta['category']
+                #    changed = True
                 if changed:
                     self.db.session.commit()
 

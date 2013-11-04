@@ -1,6 +1,7 @@
 from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer, db
+from models import Post, Category
 from settings import APP_DIR
 
 import os
@@ -32,7 +33,7 @@ def archive():
 
 @app.route('/categories/')
 def categories():
-
+    categories = Category.query.all()
     # category_file = os.path.join(APP_DIR, 'gen/categories.md')
     # posts = [page for page in pages if 'category' in page.meta]
     # categories = {}
