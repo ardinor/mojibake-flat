@@ -34,28 +34,15 @@ def archive():
 @app.route('/categories/')
 def categories():
     categories = Category.query.all()
-    # category_file = os.path.join(APP_DIR, 'gen/categories.md')
-    # posts = [page for page in pages if 'category' in page.meta]
-    # categories = {}
-    # for i in posts:
-    #     for j in page.meta['category'].split(', '):
-    #         if j in categories.keys():
-    #             categories[j] += 1
-    #         else:
-    #             categories[j] = 1
-    #         #categories.append(j)
-    # #categories = sorted(categories)
+
     return render_template('categories.html', categories=categories)
 
 @app.route('/categories/<name>')
 def category_name(name):
-    category_file = os.path.join(APP_DIR, 'gen/categories.md')
-    with open(category_file, 'r') as f:
-        categories = f.readline()
-    categories = ast.literal_eval(categories)
-    if name in categories.keys():
-        return render_template('category_list.html', name=name,
-                               posts=categories[name])
+    category = Category.query.filter_by(name=name).first()
+
+    if category:
+        return render_template('category_list.html', category=category)
     else:
         abort(404)
 

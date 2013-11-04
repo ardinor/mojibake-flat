@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Defestri - {{ name }}{% endblock %}
+{% block title %}Defestri - {{ category.name }}{% endblock %}
 
 {% block content %}
-<h1 class="text-center">Posts tagged '{{ name }}'</h1>
-{% for i in posts %}
-<h3><a href="{{ url_for('page', path='/{}'.format(i)) }}">{{ i }}</a></h3>
+<h1 class="text-center">Posts tagged '{{ category.name }}'</h1>
+{% for i in category.posts %}
+<h3><a href="{{ url_for('page', path='/{}'.format(i.path)) }}">{{ i.title }}</a></h3>
 {% endfor %}
 {% endblock %}
