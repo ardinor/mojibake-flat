@@ -5,6 +5,11 @@
 {% block content %}
 <h1 class="text-center">Archive</h1>
 {% for i in posts %}
-{{ i.title }} - {{moment_js(i.date).format('LLLL')}}
+<p>
+    <a href="{{ url_for('page', path=i.path)  }}"><h3>{{ i.title }}</h3></a>{{moment_js(i.date).format('LLLL')}}<span class="pull-right">{% for j in i.categories %}<a href="{{ url_for('category_name', name=j.name) }}">{{ j.name }}</a>{% if j != i.categories[-1] %}, {% endif %}{% endfor %}</span>
+</p>
+{% if posts[-1] != i %}
+    <hr class="post-divider">
+{% endif %}
 {% endfor %}
 {% endblock %}

@@ -25,7 +25,10 @@ def about():
 
 @app.route('/archive/')
 def archive():
-    return render_template('archive.html')
+    posts = Post.query.all()
+    years = list(set([post.date.year for post in posts]))
+
+    return render_template('archive.html', years=years)
 
 @app.route('/archive/<year>')
 def archive_year(year):

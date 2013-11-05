@@ -4,5 +4,7 @@
 
 {% block content %}
 <h1 class="text-center">Archive</h1>
-
+{% for year in years %}
+<a href="{{ url_for('archive_year', year=year)  }}"><h2>{{ year }}</h2></a>
+{% endfor %}
 {% endblock %}
