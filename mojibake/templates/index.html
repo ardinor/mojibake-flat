@@ -12,9 +12,19 @@
     {% if 'category' in page.meta.keys() %}
         <span class="pull-right">{% for i in page.meta['category'].split(', ') %}<a href="{{ url_for('category_name', name=i) }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
     {% endif %}
+    {# Truncating causes a problem is at truncates after a <strong> tag but before </strong> for example all the rest of the text on the page will be affected #}
+    {% if page.html|length > 5000 %}
+    <p>
+        {{ page.html|truncate(5000)|safe }}
+    </p>
+    <p>
+        <a href="{{ url_for('page', path=page.path)  }}">Read more...</a>
+    </p>
+    {% else %}
     <p>
         {{ page }}
     </p>
+    {% endif %}
     {% if pages[-1] != page %}
         <hr class="post-divider">
     {% endif %}

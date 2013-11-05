@@ -13,9 +13,18 @@
     {% if 'category' in page.meta.keys() %}
         <span class="pull-right">{% for i in page.meta['category'].split(', ') %}<a href="{{ url_for('category_name', name=i) }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
     {% endif %}
+    {% if page.html|length > 3000 %}
+    <p>
+        {{ page.html|truncate(3000)|safe }}
+    </p>
+    <p>
+        <a href="{{ url_for('page', path=page.path)  }}">Read more...</a>
+    </p>
+    {% else %}
     <p>
         {{ page }}
     </p>
+    {% endif %}
     {% if pages[-1] != page %}
         <hr class="post-divider">
     {% endif %}
