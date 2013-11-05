@@ -1,6 +1,8 @@
 import os
 from mojibake.settings import FLATPAGES_ROOT
 
+# UNUSED
+
 def build_gen_files():
 
     posts = os.path.join(FLATPAGES_ROOT, 'posts')

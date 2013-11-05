@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Defestri - Archive for {{ year }}{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Archive</h1>
+{% for i in posts %}
+{{ i.title }} - {{moment_js(i.date).format('LLLL')}}
+{% endfor %}
+{% endblock %}

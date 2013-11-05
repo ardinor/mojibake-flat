@@ -2,10 +2,6 @@ from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer, db
 from models import Post, Category
-from settings import APP_DIR
-
-import os
-import ast
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
 @freezer.register_generator
@@ -30,6 +26,17 @@ def about():
 @app.route('/archive/')
 def archive():
     return render_template('archive.html')
+
+@app.route('/archive/<year>')
+def archive_year(year):
+    year_posts = Post.query.filter("strftime('%Y', date) = :year"). \
+            params(year=year).order_by('-date').all()
+
+    if year_posts:
+        return render_template('archive_year.html', year=year,
+            posts=year_posts)
+    else:
+        abort(404)
 
 @app.route('/categories/')
 def categories():
