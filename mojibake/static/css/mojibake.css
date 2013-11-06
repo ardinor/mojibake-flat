@@ -1,5 +1,5 @@
 body {
-    padding-top: 10px;
+    padding-top: 50px;
     padding-bottom: 40px;
     /* 錆浅葱 */
     background-color: #6699A1;
@@ -80,3 +80,8 @@ pre {
     background-color: #78C2C4;
 }
 
+.navbar-default {
+    width: 200px;
+    min-height: 50px;
+    height: 50px;
+}
