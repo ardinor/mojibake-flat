@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 40px;
     /* 錆浅葱 */
     background-color: #6699A1;
@@ -27,6 +27,10 @@ body, html {
 }
 
 .right-column {
+    color: white;
+}
+
+.header {
     color: white;
 }
 

@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}Defestri - Archive for {{ year }}{% endblock %}
+{% block header %} - Archive for {{ year }}{% endblock %}
 
 {% block content %}
-<h1 class="text-center">Archive</h1>
+<h3 class="text-center">Archive</h3>
 {% for i in posts %}
 <p>
     <a href="{{ url_for('page', path=i.path)  }}"><h3>{{ i.title }}</h3></a>{{moment_js(i.date).format('LLLL')}}<span class="pull-right">{% for j in i.categories %}<a href="{{ url_for('category_name', name=j.name) }}">{{ j.name }}</a>{% if j != i.categories[-1] %}, {% endif %}{% endfor %}</span>

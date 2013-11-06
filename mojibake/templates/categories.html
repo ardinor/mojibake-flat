@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}Defestri - Categories{% endblock %}
+{% block header %} - Categories{% endblock %}
 
 {% block content %}
-<h1 class="text-center">Categories</h1>
 {% for i in categories %}
 <h3><a href="{{ url_for('category_name', name=i.name) }}">{{ i.name }} ({{ i.posts.count() }} posts)</a></h3>
 {% endfor %}
