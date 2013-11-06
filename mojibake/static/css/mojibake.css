@@ -60,3 +60,23 @@ pre {
     width: 50%;
 }
 
+.pagination li a {
+    /* 錆浅葱 */
+    background-color: #6699A1;
+}
+
+.pagination .disabled a {
+    /* 深川鼠 */
+    background-color: #77969A;
+}
+
+.pagination .disabled a:hover {
+    /* 深川鼠 */
+    background-color: #77969A;
+}
+
+.pagination li .active {
+    /* 白群 */
+    background-color: #78C2C4;
+}
+

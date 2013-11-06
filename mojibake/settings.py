@@ -4,6 +4,8 @@ import os
 REPO_NAME = "" # Used for FREEZER_BASE_URL
 DEBUG = True
 
+POSTS_PER_PAGE = 5
+
 # Assumes the app is located in the same directory
 # where this file resides
 APP_DIR = os.path.dirname(os.path.abspath(__file__))

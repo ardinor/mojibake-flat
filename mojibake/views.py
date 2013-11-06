@@ -2,6 +2,7 @@ from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer, db
 from models import Post, Category
+from settings import POSTS_PER_PAGE
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
 @freezer.register_generator
@@ -17,7 +18,8 @@ def home():
     # Sort pages by date
     sorted_posts = sorted(posts, reverse=True,
         key=lambda page: page.meta['date'])
-    return render_template('index.html', pages=sorted_posts[:5])
+    posts_total = len(sorted_posts)
+    return render_template('index.html', pages=sorted_posts[:POSTS_PER_PAGE])
 
 @app.route('/about/')
 def about():
@@ -56,13 +58,26 @@ def category_name(name):
     else:
         abort(404)
 
-@app.route('/posts/')
-def posts():
-    posts = [page for page in pages if 'date' in page.meta]
+#@app.route('/posts/')
+#def posts():
+    #posts = [page for page in pages if 'date' in page.meta]
     # Sort pages by date
-    sorted_posts = sorted(posts, reverse=True,
-        key=lambda page: page.meta['date'])
-    return render_template('posts.html', pages=sorted_posts[:5])
+    #sorted_posts = sorted(posts, reverse=True,
+    #    key=lambda page: page.meta['date'])
+    #return render_template('posts.html', pages=sorted_posts[:POSTS_PER_PAGE])
+
+@app.route('/posts/')
+@app.route('/posts/<page>')
+def posts(page=1):
+    #maybe we should parse the body into the DB too....
+    #this is kind of messy
+    posts = Post.query.paginate(int(page), POSTS_PER_PAGE, False)
+    found_pages = []
+    for i in posts.items:
+        found_pages.append(pages.get(i.path))
+    return render_template('posts.html', pages=found_pages,
+        pagination_item=posts)
+
 
 @app.route('/<path:path>/')
 def page(path):
