@@ -4,7 +4,7 @@ import os
 REPO_NAME = "" # Used for FREEZER_BASE_URL
 DEBUG = True
 
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = 3
 
 # Assumes the app is located in the same directory
 # where this file resides
