@@ -8,12 +8,21 @@ tags = db.Table('tags',
                     db.Integer,
                     db.ForeignKey('tag.id')))
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    posts = db.relationship('Post', backref='category',
+                                lazy='dynamic')
+
+    def __repr__(self):
+        return '<Category {}>'.format(self.name)
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), index=True)
     path = db.Column(db.String(240), index=True)
     date = db.Column(db.DateTime)
-    #add category
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     tags = db.relationship('Tag', secondary=tags,
                                  backref=db.backref('posts',
                                                     lazy='dynamic'))
@@ -27,3 +36,5 @@ class Tag(db.Model):
 
     def __repr__(self):
         return '<Tag {}>'.format(self.name)
+
+

@@ -1,18 +1,25 @@
 import collections
 from flask.ext.script import Command
+import os
+
+from settings import APP_DIR
 #from models import Post
 #from mojibake.models import Post
 #from app import manager
 
 class ManageMetaDB(Command):
 
-    def __init__(self, db, pages, Post, Tag):
+    def __init__(self, db, pages, models):
         self.db = db
         self.pages = pages
-        self.Post = Post
-        self.Tag = Tag
+        self.Post = models.Post
+        self.Tag = models.Tag
+        self.Category = models.Category
 
     def run(self):
+
+        if os.path.exists(os.path.join(APP_DIR, 'app.db')) is False:
+            self.db.create_all()
         posts = [page for page in self.pages if 'date' in page.meta]
         for page in posts:
             db_page = self.Post.query.filter_by(path=page.path).first()
@@ -29,17 +36,14 @@ class ManageMetaDB(Command):
                             tags.append(db_tag)
                         else:
                             tags.append(db_tag)
-                # else:
-                #     db_cat = self.Category.query.filter_by(name=page.meta['category']).first()
-                #     if db_cat is None:
-                #         db_cat = self.Category(name=page.meta['category'])
-                #         self.db.session.add(db_cat)
-                #         self.db.session.commit()
-                #         categories.append(db_cat)
-                #     else:
-                #         categories.append(db_cat)
+                category = page.meta['category']
+                db_cat = self.Category.query.filter_by(name=category).first()
+                if db_cat is None:
+                    db_cat = self.Category(name=category)
+                    self.db.session.add(db_cat)
+                    self.db.session.commit()
                 db_page = self.Post(title=page.meta['title'], path=page.path,
-                               date=page.meta['date'],
+                               date=page.meta['date'], category_id=db_cat.id,
                                tags=tags)
                 self.db.session.add(db_page)
                 self.db.session.commit()

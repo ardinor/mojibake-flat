@@ -1,6 +1,7 @@
 title: Test
 date: 2013-09-11 22:00:00
 tags: test, test2
+category: test
 
 Muldoon whisks in through the double doors. Hammond is right behind him. They go straight to the main console, where RAY ARNOLD fortyish, a chronic worrier and chain-smoker, is seated. "National Weather Service is tracking a tropical storm about seventy-five miles west of us." Hammond sighs and looks over Arnold's shoulder. "Why didn't I build in Orlando?" "I'll keep an eye on it. Maybe it'll swing south like the last one." "Ray, start the tour program." He punches a button on the console. "Hold on to your butts!"
 

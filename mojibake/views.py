@@ -45,7 +45,7 @@ def archive_year(year):
 
 @app.route('/tags/')
 def tags():
-    tags = Tag.query.all()
+    tags = Tag.query.order_by('name').all()
 
     return render_template('tags.html', tags=tags)
 
@@ -71,7 +71,7 @@ def tag_name(name):
 def posts(page=1):
     #maybe we should parse the body into the DB too....
     #this is kind of messy
-    posts = Post.query.paginate(int(page), POSTS_PER_PAGE, False)
+    posts = Post.query.order_by(Post.date.desc()).paginate(int(page), POSTS_PER_PAGE, False)
     found_pages = []
     for i in posts.items:
         found_pages.append(pages.get(i.path))

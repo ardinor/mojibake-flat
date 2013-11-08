@@ -7,10 +7,16 @@
 
 {% block content %}
 {% for page in pages %}
-    <a href="{{ url_for('page', path=page.path)  }}">
+    <p>
+        <a href="{{ url_for('page', path=page.path)  }}">
         {# {{ page.path.replace('posts/', '', 1) }} #}
-        <h3>{{ page.title }}</h3>
-    </a>
+            <h3 style="display: inline;">{{ page.title }}</h3>
+        </a>
+        {% if 'category' in page.meta.keys() %}
+        <span style="padding-top: 5px;" class="pull-right">Posted under: {{ page.meta['category'] }}</span>
+        {% endif %}
+    </p>
+
     {{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em>
     {% if 'tags' in page.meta.keys() %}
         <span class="pull-right">Tagged: {% for i in page.meta['tags'].split(', ') %}<a href="{{ url_for('tag_name', name=i) }}">{{ i }}</a>{% if i != page.meta['tags'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>

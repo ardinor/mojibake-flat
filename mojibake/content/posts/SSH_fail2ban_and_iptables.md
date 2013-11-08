@@ -2,6 +2,7 @@ title: SSH, fail2ban & iptables
 date: 2013-11-06 22:49:30
 tags: SSH, fail2ban, iptables
 category: IT
+lang: en
 
 So I've had this server for a little over a month now, and early on I set SSH up with key login to ensure no-one else can log in. After chatting with a friend about all the brute force attempts one of his servers is on the receiving end of I decided to take a look at the failed login attempts on mine.
 
