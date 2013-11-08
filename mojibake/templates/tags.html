@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Defestri - Tags{% endblock %}
+{% block header %} - Tags{% endblock %}
+
+{% block content %}
+{% for i in tags %}
+<h3><a href="{{ url_for('tag_name', name=i.name) }}">{{ i.name }} ({{ i.posts.count() }} posts)</a></h3>
+{% endfor %}
+{% endblock %}

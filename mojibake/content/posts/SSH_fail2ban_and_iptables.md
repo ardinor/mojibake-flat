@@ -1,8 +1,9 @@
 title: SSH, fail2ban & iptables
 date: 2013-11-06 22:49:30
-category: SSH, fail2ban, iptables
+tags: SSH, fail2ban, iptables
+category: IT
 
-So I've had this server for a little over a month now, and early on I set SSH up with key login to ensure no-one else can log in. After chatting with a friend I decided to take a look at the failed login attempts in auth.log
+So I've had this server for a little over a month now, and early on I set SSH up with key login to ensure no-one else can log in. After chatting with a friend about all the brute force attempts one of his servers is on the receiving end of I decided to take a look at the failed login attempts on mine.
 
     :::bash
     cat /var/log/auth.log | grep 'sshd.*Invalid'
@@ -33,13 +34,13 @@ I have of course set up fail2ban which on the default settings, bans them after 
 
     sudo nano /etc/fail2ban/jail.local
 
-Scroll down to the section with bantime and maxretry and set as
+Scroll down to the section with bantime and maxretry and set as:
 
     # ban time 24 hours
     bantime = 86400
     maxretry = 3
 
-Scroll down to the ssh section as well and set it to three maximum retries
+Scroll down to the ssh section as well and set it to three maximum retries:
 
     [ssh]
     enabled = true
@@ -48,29 +49,31 @@ Scroll down to the ssh section as well and set it to three maximum retries
     logpath = /var/log/auth.log
     maxtry = 3
 
-Then finally restart fail2ban
+Then finally restart fail2ban.
 
     :::bash
     sudo service fail2ban restart
 
 Now that that's taken care of, let's take it one further step. We can see there's one IP (115.114.14.195 an Indian IP) that seems to have taken a likening to trying and brute forcing it's way in. Let's just ban him at the kernal firewall instead.
 
-Let's first open up the existing test rules for iptables (if you have them)
+Let's first open up the existing test rules for iptables (if you have them):
 
     sudo nano /etc/iptables.test.rules
 
-And let's make a new section for banned IPs
+And let's make a new section for banned IPs:
 
     ## Banned IPs
     -A INPUT -s 115.114.14.195 -j DROP
     -A OUTPUT -d 115.114.14.195 -j DROP
 
-Then double check how it looks
+Then double check how it looks:
 
     sudo iptables -L
 
-If that looks okay we'll save it to the master iptables file
+If that looks okay we'll save it to the master iptables file:
 
     sudo sh -c "iptables-save > /etc/iptables.up.rules"
 
 That ought to keep him out. Funnily enough my friend had log in attempts from the same IP. Whoever it is they certainly get around.
+
+Obviously moving SSH to a different port would stop some of these casual attempts at finding open SSH services but let's leave SSH where it is for the time being to ensure these changes workout as intended.

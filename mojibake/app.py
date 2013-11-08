@@ -22,7 +22,7 @@ from mojibake import models
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-manager.add_command('manage_db', ManageMetaDB(db, pages, models.Post, models.Category))
+manager.add_command('manage_db', ManageMetaDB(db, pages, models.Post, models.Tag))
 
 app.jinja_env.globals['moment_js'] = moment_js
 

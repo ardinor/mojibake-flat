@@ -12,8 +12,8 @@
         <h3>{{ page.title }}</h3>
     </a>
     {{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em>
-    {% if 'category' in page.meta.keys() %}
-        <span class="pull-right">Tagged: {% for i in page.meta['category'].split(', ') %}<a href="{{ url_for('category_name', name=i) }}">{{ i }}</a>{% if i != page.meta['category'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
+    {% if 'tags' in page.meta.keys() %}
+        <span class="pull-right">Tagged: {% for i in page.meta['tags'].split(', ') %}<a href="{{ url_for('tag_name', name=i) }}">{{ i }}</a>{% if i != page.meta['tags'].split(', ')[-1] %}, {% endif %}{% endfor%}</span>
     {% endif %}
     <p>
         {{ page }}

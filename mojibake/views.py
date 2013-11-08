@@ -1,7 +1,7 @@
 from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer, db
-from models import Post, Category
+from models import Post, Tag
 from settings import POSTS_PER_PAGE
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
@@ -43,18 +43,18 @@ def archive_year(year):
     else:
         abort(404)
 
-@app.route('/categories/')
-def categories():
-    categories = Category.query.all()
+@app.route('/tags/')
+def tags():
+    tags = Tag.query.all()
 
-    return render_template('categories.html', categories=categories)
+    return render_template('tags.html', tags=tags)
 
-@app.route('/categories/<name>')
-def category_name(name):
-    category = Category.query.filter_by(name=name).first()
+@app.route('/tags/<name>')
+def tag_name(name):
+    tag = Tag.query.filter_by(name=name).first()
 
-    if category:
-        return render_template('category_list.html', category=category)
+    if tag:
+        return render_template('tag_list.html', tag=tag)
     else:
         abort(404)
 
