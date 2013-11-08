@@ -20,15 +20,11 @@ Apply migration
 
 After every database model change run `migrate` and `upgrade` again
 
-To initiate DB
-
-    python run.py shell
-    from mojibake.app import db
-    db.create_all()
-
-To make tables for the views
+To initiate the DB and make tables for the views
 
     python run.py manage_db
+
+After new posts are added or existing posts change run the same again
 
 
 ### TO DO: ###

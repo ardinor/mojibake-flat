@@ -1,7 +1,10 @@
 from mojibake import main
-from build_gen_files import build_gen_files
 
 if __name__ == '__main__':
     #main.freezer.freeze()
-    build_gen_files()
+    print 'Managing DB...'
+    #main.manager.run(commands={'manage_db': ''})
+    main.manager.handle('manage.py', ['manage_db'])
+    print 'Freezing...'
     main.freezer.run(debug=True)
+    print 'Finished.'
