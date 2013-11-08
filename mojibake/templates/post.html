@@ -8,7 +8,7 @@
     <p>
         <h3 style="display: inline;">{{ page.meta.title }}</h3>
         {% if 'category' in page.meta.keys() %}
-        <span style="padding-top: 5px;" class="pull-right">Posted under: {{ page.meta['category'] }}</span>
+        <span style="padding-top: 5px;" class="pull-right">Posted under: <a href="{{ url_for('category', name=page.meta['category']) }}">{{ page.meta['category'] }}</a></span>
         {% endif %}
     </p>
     <p>Posted on: {{moment_js(page.date).format('LLLL')}} - <em>{{moment_js(page.date).fromNow()}} ago.</em>

@@ -24,4 +24,9 @@ $(function() {
         $('li.active').removeClass();
         $('#tags_tab').addClass('active');
     }
+    if (window.location.pathname.indexOf("categories") !== -1)
+    {
+        $('li.active').removeClass();
+        $('#categories_tab').addClass('active');
+    }
 });

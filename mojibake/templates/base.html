@@ -57,12 +57,14 @@
               <a href="{{ url_for('archive') }}">Archive</a>
             </li>
             <li style="padding-top: 20px;"id="categories_tab">
-              <a style="text-decoration: underline">Post Categories</a>
+              <a href="{{ url_for('categories') }}" style="text-decoration: underline">Post Categories</a>
             </li>
-            <li style="" class="" id="">
-              <a><small>Test</small></a>
+            {% for i in glbl_categories %}
+            <li class="" id="">
+              <a style="padding: 0px;" href="{{ url_for('category', name=i.name) }}"><small>{{ i.name }}</small></a>
             </li>
-            <li>
+            {% endfor %}
+            <li style="padding-top: 15px;" >
               <a href="https://github.com/ardinor"><img alt="Link to my Github" title="My Github" src="/static/img/GitHub-Mark-32px.png"/></a>
             </li>
             <p style="padding-top: 30px;"><em>Small on content, big on Lorem impsum!</em></p>

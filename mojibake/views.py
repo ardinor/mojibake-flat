@@ -1,7 +1,7 @@
 from flask import render_template, abort
 from flask_flatpages import pygments_style_defs
 from app import app, pages, freezer, db
-from models import Post, Tag
+from models import Post, Tag, Category
 from settings import POSTS_PER_PAGE
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
@@ -55,6 +55,21 @@ def tag_name(name):
 
     if tag:
         return render_template('tag_list.html', tag=tag)
+    else:
+        abort(404)
+
+@app.route('/categories/')
+def categories():
+    categories = Category.query.order_by('name').all()
+
+    return render_template('categories.html', categories=categories)
+
+@app.route('/categories/<name>')
+def category(name):
+    category = Category.query.filter_by(name=name).first()
+
+    if category:
+        return render_template('category.html', category=category)
     else:
         abort(404)
 
