@@ -2,7 +2,7 @@ import collections
 from flask.ext.script import Command
 import os
 
-from settings import APP_DIR
+from settings import APP_DIR, FLATPAGES_ROOT, FLATPAGES_EXTENSION
 #from models import Post
 #from mojibake.models import Post
 #from app import manager
@@ -73,12 +73,36 @@ class ManageMetaDB(Command):
                     if tags:
                         changed = True
                         db_page.tags = tags
+                db_cat = self.Category.query.filter_by(name=page.meta['category']).first()
+                if db_cat is not None:
+                    if db_cat.id != db_page.category_id:
+                        db_page.category_id = db_cat.id
+                        changed = True
+                else:
+                    db_cat = self.Category(name=page.meta['category'])
+                    self.db.session.add(db_cat)
+                    self.db.session.commit()
+                    db_page.category_id = db_cat.id
+                    changed = True
+
 
                 if changed:
                     self.db.session.commit()
 
+        posts = self.Post.query.all()
+        for i in posts:
+            if os.path.exists(os.path.join(FLATPAGES_ROOT, i.path+FLATPAGES_EXTENSION)) is False:
+                self.db.session.delete(i)
+                self.db.session.commit()
+
         tags = self.Tag.query.all()
         for i in tags:
+            if i.posts.count() == 0:
+                self.db.session.delete(i)
+                self.db.session.commit()
+
+        categories = self.Category.query.all()
+        for i in categories:
             if i.posts.count() == 0:
                 self.db.session.delete(i)
                 self.db.session.commit()

@@ -9,7 +9,7 @@ So I've had this server for a little over a month now, and early on I set SSH up
     :::bash
     cat /var/log/auth.log | grep 'sshd.*Invalid'
 
-I was somewhat surprised to see the number of attempts on even a fairly new server. It doesn't take them long to find them apparently!
+I was somewhat surprised to see the number of attempts on even a fairly new server. It doesn't take them long to find servers apparently!
 
     Nov  6 08:03:22 defestri sshd[31088]: Invalid user apolline from 115.114.14.195
     Nov  6 08:37:11 defestri sshd[31107]: Invalid user appolenia from 115.114.14.195
@@ -55,7 +55,7 @@ Then finally restart fail2ban.
     :::bash
     sudo service fail2ban restart
 
-Now that that's taken care of, let's take it one further step. We can see there's one IP (115.114.14.195 an Indian IP) that seems to have taken a likening to trying and brute forcing it's way in. Let's just ban him at the kernal firewall instead.
+Now that that's taken care of, let's take it one further step. We can see there's one IP (115.114.14.195, an Indian IP) that seems to have taken a likening to trying and brute forcing it's way in. Let's just ban him at the kernal firewall instead.
 
 Let's first open up the existing test rules for iptables (if you have them):
 
