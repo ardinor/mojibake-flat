@@ -26,6 +26,10 @@ To initiate the DB and make tables for the views
 
 After new posts are added or existing posts change run the same again
 
+When making a post, put the date as UTC for the localisation in moment.js to work
+
+    datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+
 
 ### TO DO: ###
 

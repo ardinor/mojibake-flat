@@ -31,7 +31,7 @@ def archive():
 
     return render_template('archive.html', years=years)
 
-@app.route('/archive/<year>')
+@app.route('/archive/<year>/')
 def archive_year(year):
     year_posts = Post.query.filter("strftime('%Y', date) = :year"). \
             params(year=year).order_by('-date').all()
@@ -48,7 +48,7 @@ def tags():
 
     return render_template('tags.html', tags=tags)
 
-@app.route('/tags/<name>')
+@app.route('/tags/<name>/')
 def tag_name(name):
     tag = Tag.query.filter_by(name=name).first()
 
@@ -63,7 +63,7 @@ def categories():
 
     return render_template('categories.html', categories=categories)
 
-@app.route('/categories/<name>')
+@app.route('/categories/<name>/')
 def category(name):
     category = Category.query.filter_by(name=name).first()
 
@@ -81,7 +81,7 @@ def category(name):
     #return render_template('posts.html', pages=sorted_posts[:POSTS_PER_PAGE])
 
 @app.route('/posts/')
-@app.route('/posts/<page>')
+@app.route('/posts/p/<page>/')
 def posts(page=1):
     #maybe we should parse the body into the DB too....
     #this is kind of messy
