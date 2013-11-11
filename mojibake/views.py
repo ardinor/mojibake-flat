@@ -1,8 +1,14 @@
-from flask import render_template, abort
+from urlparse import urljoin
+from flask import render_template, abort, request
 from flask_flatpages import pygments_style_defs
+from werkzeug.contrib.atom import AtomFeed
+
 from app import app, pages, freezer, db
 from models import Post, Tag, Category
 from settings import POSTS_PER_PAGE
+
+def make_external(url):
+    return urljoin(request.url_root, url)
 
 # From https://github.com/killtheyak/killtheyak.github.com/blob/master/killtheyak/views.py
 @freezer.register_generator
@@ -104,6 +110,22 @@ def page(path):
 @app.route('/pygments.css')
 def pygments_css():
     return pygments_style_defs('autumn'), 200, {'Content-Type': 'text/css'}
+
+@app.route('/recent.atom')
+def recent_feed():
+    feed = AtomFeed('Recent Articles',
+                    feed_url=request.url, url=request.url_root)
+    posts = [page for page in pages if 'date' in page.meta]
+    sorted_posts = sorted(posts, reverse=True,
+        key=lambda page: page.meta['date'])[:10]
+    for post in sorted_posts:
+        feed.add(post.meta['title'], unicode(post.body[:500] + '\n\n....'),
+                 content_type='html',
+                 author='Jordan',
+                 url=make_external(post.path),
+                 updated=page.meta['date'])
+    return feed.get_response()
+
 
 @app.errorhandler(404)
 def internal_error(error):

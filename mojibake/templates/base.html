@@ -13,6 +13,10 @@
     {% assets "js_moment" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+    <link href="{{ url_for('recent_feed') }}"
+      rel="alternate"
+      title="Recent Posts"
+      type="application/atom+xml">
   </head>
   <body>
       <nav class="navbar navbar-default navbar-fixed-top" style="height: 3px;" role="navigation">
