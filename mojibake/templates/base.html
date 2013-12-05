@@ -26,6 +26,7 @@
       </nav>
     <div class="container">
       <noscript>
+        <!-- Change to a modal? Too annoying? -->
         <div class="alert alert-danger text-center">
           This site uses some Javascript, please enable Javascript.
         </div>
@@ -60,7 +61,7 @@
             <li id="archive_tab">
               <a href="{{ url_for('archive') }}">Archive</a>
             </li>
-            <li style="padding-top: 20px;"id="categories_tab">
+            <li style="padding-top: 20px;" id="categories_tab">
               <a href="{{ url_for('categories') }}" style="text-decoration: underline">Post Categories</a>
             </li>
             {% for i in glbl_categories %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Defestri - Break-in attempts &amp; Bans{% endblock %}
+{% block header %} - Break-in attempts &amp; Bans{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-default post-header">
+        <div class="panel-heading">
+            <a href="/bans/">
+                <h3 style="display: inline;">Break-in attempts &amp; Bans</h3>
+            </a>
+        </div>
+        <div class="panel-body">
+            For the month of November, 2013.
+            <span class="pull-right">All times posted are</span>
+        </div>
+    </div>
+
+    <h4 style="text-decoration: underline">Break-in attempts</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>When</th>
+                <th>Username</th>
+                <th>IP</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attempt, details in breakin_attempts.iteritems() %}
+            <tr>
+                <td>{{ attempt }}</td>
+                <td>{{ details[1] }}</td>
+                <td>{{ details[0] }}</td>
+                <td>{{ ', '.join(ips[details[0]].values()) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 style="text-decoration: underline">Bans</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>When</th>
+                <th>IP</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ban_date, ip_add in bans.iteritems() %}
+            <tr>
+                <td>{{ ban_date }}</td>
+                <td>{{ ip_add }}</td>
+                <td>{{ ', '.join(ips[ip_add].values()) }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

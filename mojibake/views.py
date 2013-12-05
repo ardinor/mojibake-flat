@@ -3,6 +3,9 @@ from flask import render_template, abort, request
 from flask_flatpages import pygments_style_defs
 from werkzeug.contrib.atom import AtomFeed
 
+#
+import datetime
+
 from app import app, pages, freezer, db
 from models import Post, Tag, Category
 from settings import POSTS_PER_PAGE
@@ -53,6 +56,25 @@ def tags():
     tags = Tag.query.order_by('name').all()
 
     return render_template('tags.html', tags=tags)
+
+@app.route('/bans/')
+def bans():
+    breakin_attempts = {datetime.datetime(2013, 12, 2, 20, 31, 46): ('95.183.198.46', 'nagios'),
+                        datetime.datetime(2013, 12, 2, 20, 56, 46): ('95.183.198.46', 'postgres'),
+                        datetime.datetime(2013, 12, 2, 21, 04, 46): ('95.183.198.46', 'igor'),
+                        datetime.datetime(2013, 12, 2, 22, 31, 46): ('211.141.113.237', 'ftpuser'),
+                        datetime.datetime(2013, 12, 2, 22, 48, 46): ('195.60.215.30', 'oracle')
+                        }
+
+    bans = {datetime.datetime(2013, 12, 2, 21, 05, 46): '95.183.198.46',
+            datetime.datetime(2013, 12, 2, 21, 10, 46): '211.141.113.237',
+            datetime.datetime(2013, 12, 2, 22, 50, 46): '195.60.215.30'}
+
+    ips = {'95.183.198.46': {'country':'Test', 'region': 'Test Region'},
+           '211.141.113.237': {'country':'Test', 'region': 'Test Region'},
+           '195.60.215.30': {'country':'Test', 'region': 'Test Region'}}
+    return render_template('bans.html', breakin_attempts=breakin_attempts,
+                            bans=bans, ips=ips)
 
 @app.route('/tags/<name>/')
 def tag_name(name):
@@ -121,7 +143,7 @@ def recent_feed():
     for post in sorted_posts:
         feed.add(post.meta['title'], unicode(post.body[:500] + '\n\n....'),
                  content_type='html',
-                 author='Jordan',
+                 author='Jordan Moeser',
                  url=make_external(post.path),
                  updated=page.meta['date'])
     return feed.get_response()
