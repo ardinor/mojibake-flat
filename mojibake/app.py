@@ -26,6 +26,7 @@ manager.add_command('manage_db', ManageMetaDB(db, pages, models))
 
 app.jinja_env.globals['moment_js'] = moment_js
 
+# This causes an error if you try and run it before the DB is initialised...
 app.jinja_env.globals['glbl_categories'] = models.Category.query.order_by('name').all()
 
 assets = Environment(app)
