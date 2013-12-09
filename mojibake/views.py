@@ -73,8 +73,16 @@ def bans():
     ips = {'95.183.198.46': {'country':'Test', 'region': 'Test Region'},
            '211.141.113.237': {'country':'Test', 'region': 'Test Region'},
            '195.60.215.30': {'country':'Test', 'region': 'Test Region'}}
-    return render_template('bans.html', breakin_attempts=breakin_attempts,
-                            bans=bans, ips=ips)
+
+    displayed_time = 'CET'
+    time_offset = '+1'
+
+    last_month = datetime.datetime.now().replace(day=1) - datetime.timedelta(days=1)
+
+    return render_template('bans.html', displayed_time=displayed_time,
+        time_offset=time_offset, last_month=last_month,
+        breakin_attempts=breakin_attempts,
+        bans=bans, ips=ips)
 
 @app.route('/tags/<name>/')
 def tag_name(name):
@@ -146,7 +154,7 @@ def recent_feed():
                  author='Jordan Moeser',
                  url=make_external(post.path),
                  updated=page.meta['date'])
-    return feed.get_response()
+    return feed.get_response(), 200, {'Content-Type': 'application/atom+xml; charset=utf-8'}
 
 
 @app.errorhandler(404)

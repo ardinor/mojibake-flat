@@ -40,6 +40,8 @@ The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/show
 
 - Clean up unused files
 
+- Are the times displayed really localised? Hm..
+
 ### CREDITS: ###
 
 Using examples from [here](http://www.stevenloria.com/hosting-static-flask-sites-for-free-on-github-pages/) and [here](http://www.jamesharding.ca/posts/simple-static-markdown-blog-in-flask/)
