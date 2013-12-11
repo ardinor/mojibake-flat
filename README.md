@@ -42,6 +42,8 @@ The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/show
 
 - ~~Are the times displayed really localised? Hm..~~ Yep!
 
+- Shadows on the bans page, this page needs a bit of a tidy up
+
 ### CREDITS: ###
 
 Using examples from [here](http://www.stevenloria.com/hosting-static-flask-sites-for-free-on-github-pages/) and [here](http://www.jamesharding.ca/posts/simple-static-markdown-blog-in-flask/)
