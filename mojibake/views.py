@@ -59,6 +59,9 @@ def tags():
 
 @app.route('/bans/')
 def bans():
+
+    #just fill it with filler information, this template is made elsewhere
+
     breakin_attempts = {datetime.datetime(2013, 12, 2, 20, 31, 46): ('95.183.198.46', 'nagios'),
                         datetime.datetime(2013, 12, 2, 20, 56, 46): ('95.183.198.46', 'postgres'),
                         datetime.datetime(2013, 12, 2, 21, 04, 46): ('95.183.198.46', 'igor'),

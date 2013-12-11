@@ -89,7 +89,13 @@ pre {
 .post-header {
     /* If the page has a scroll bar or the side bar won't fit
     (ie smaller screen) then this width is wonky */
-    width: 103.1%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    width: 100%;
+    /*width: 103.1%;
     position:relative;
-    left:-1.5%;
+    left:-1.5%; */
 }

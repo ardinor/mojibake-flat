@@ -40,7 +40,7 @@ The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/show
 
 - Clean up unused files
 
-- Are the times displayed really localised? Hm..
+- ~~Are the times displayed really localised? Hm..~~ Yep!
 
 ### CREDITS: ###
 

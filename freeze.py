@@ -8,5 +8,6 @@ if __name__ == '__main__':
     print 'Freezing...'
     main.app.debug = False
     main.app.testing = True
+    main.app.config['ASSETS_DEBUG'] = False
     main.freezer.run(debug=True)
     print 'Finished.'
