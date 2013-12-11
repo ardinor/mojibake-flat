@@ -4,7 +4,11 @@
 {% block header %} - Tags{% endblock %}
 
 {% block content %}
-{% for i in tags %}
-<h3><a href="{{ url_for('tag_name', name=i.name) }}">{{ i.name }} ({{ i.posts.count() }} posts)</a></h3>
-{% endfor %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% for i in tags %}
+            <h3><a href="{{ url_for('tag_name', name=i.name) }}">{{ i.name }} ({{ i.posts.count() }} posts)</a></h3>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

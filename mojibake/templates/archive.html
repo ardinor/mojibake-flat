@@ -4,7 +4,11 @@
 {% block header %} - Archive{% endblock %}
 
 {% block content %}
-{% for year in years %}
-<a href="{{ url_for('archive_year', year=year)  }}"><h3>{{ year }}</h3></a>
-{% endfor %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% for year in years %}
+            <a href="{{ url_for('archive_year', year=year)  }}"><h3>{{ year }}</h3></a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

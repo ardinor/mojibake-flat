@@ -86,9 +86,9 @@ pre {
     height: 50px;
 }
 
-.post-header {
+/*.post-header {
     /* If the page has a scroll bar or the side bar won't fit
-    (ie smaller screen) then this width is wonky */
+    (ie smaller screen) then this width is wonky
     margin: 0;
     border: 0;
     padding: 0;
@@ -97,5 +97,9 @@ pre {
     width: 100%;
     /*width: 103.1%;
     position:relative;
-    left:-1.5%; */
+    left:-1.5%;
+} */
+
+.post-header .panel-heading {
+    background-color: #FDFBFF;
 }
