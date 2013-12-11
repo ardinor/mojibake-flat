@@ -31,7 +31,7 @@
 {% endmacro %}
 
 {% macro render_post(page) %}
-    <div class="panel panel-default post-header">
+<div class="panel panel-default post-header">
         <div class="panel-heading">
             <a href="{{ url_for('page', path=page.path) }}">
                 <h3 style="display: inline;">{{ page.title }}</h3>
@@ -54,6 +54,7 @@
     </p>
         </div>
     </div>
+    <p> </p>
     <p style="padding: 5px;"> </p>
     {#{% if pages[-1] != page %}
         <hr class="post-divider">
