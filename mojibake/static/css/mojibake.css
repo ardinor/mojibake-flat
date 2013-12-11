@@ -28,6 +28,12 @@ body, html {
 
 .right-column {
     color: white;
+/*    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    -webkit-box-shadow: 4px 4px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    4px 4px 3px rgba(50, 50, 50, 0.75);
+    box-shadow:         4px 4px 3px rgba(50, 50, 50, 0.75); */
 }
 
 .header {
@@ -49,6 +55,7 @@ footer a {
     width: 90%;
 }
 
+/* background of the code blocks irc */
 pre {
     background-color: #FAFAFA;
 }
@@ -84,6 +91,12 @@ pre {
     width: 500px;
     min-height: 50px;
     height: 50px;
+    -moz-border-radius-bottomright: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: #6699A1;
+    -webkit-box-shadow: 4px 4px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    4px 4px 3px rgba(50, 50, 50, 0.75);
+    box-shadow:         4px 4px 3px rgba(50, 50, 50, 0.75);
 }
 
 /*.post-header {
@@ -102,4 +115,10 @@ pre {
 
 .post-header .panel-heading {
     background-color: #FDFBFF;
+}
+
+.panel-default {
+    -webkit-box-shadow: 4px 4px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    4px 4px 3px rgba(50, 50, 50, 0.75);
+    box-shadow:         4px 4px 3px rgba(50, 50, 50, 0.75);
 }

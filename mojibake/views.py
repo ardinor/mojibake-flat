@@ -128,8 +128,11 @@ def posts(page=1):
     found_pages = []
     for i in posts.items:
         found_pages.append(pages.get(i.path))
-    return render_template('posts.html', pages=found_pages,
-        pagination_item=posts)
+    if found_pages:
+        return render_template('posts.html', pages=found_pages,
+            pagination_item=posts)
+    else:
+        abort(404)
 
 
 @app.route('/<path:path>/')
