@@ -117,7 +117,7 @@ pre {
     background-color: #FDFBFF;
 }
 
-.panel-default {
+.panel-shadow {
     -webkit-box-shadow: 4px 4px 3px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    4px 4px 3px rgba(50, 50, 50, 0.75);
     box-shadow:         4px 4px 3px rgba(50, 50, 50, 0.75);
