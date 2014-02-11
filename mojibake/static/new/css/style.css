@@ -1157,6 +1157,22 @@
 			background-color: #e8edec;
 		}
 
+		#main > .tags h3
+		{
+			padding-bottom: 10px;
+		}
+
+		#main > .archive h3
+		{
+			padding-bottom: 10px;
+		}
+
+		#main > .categories h3
+		{
+			padding-bottom: 10px;
+		}
+
+
 /*********************************************************************************/
 /* Code blocks                                                                   */
 /*********************************************************************************/
@@ -1183,4 +1199,29 @@ pre {
 	height: 10px;
 	border: 0;
 	background-color: #212628;
+}
+
+.bans table {
+	width: 75%;
+	table-layout: fixed;
+}
+
+.bans td {
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+.bans th {
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom: 1px solid black;
+}
+
+.bans tr.even {
+	background-color: #EFF0F0;
+}
+
+.bans tr:hover {
+	background-color: #C5C8C9;
+	color: #A82B35;
 }

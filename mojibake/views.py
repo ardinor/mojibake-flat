@@ -33,7 +33,7 @@ def home():
 
 @app.route('/about/')
 def about():
-    return render_template('about.html')
+    return render_template('new/about.html')
 
 @app.route('/archive/')
 def archive():
@@ -48,7 +48,7 @@ def archive_year(year):
             params(year=year).order_by('-date').all()
 
     if year_posts:
-        return render_template('archive_year.html', year=year,
+        return render_template('new/archive_year.html', year=year,
             posts=year_posts)
     else:
         abort(404)
@@ -57,7 +57,7 @@ def archive_year(year):
 def tags():
     tags = Tag.query.order_by('name').all()
 
-    return render_template('tags.html', tags=tags)
+    return render_template('new/tags.html', tags=tags)
 
 @app.route('/bans/')
 def bans():
@@ -84,7 +84,7 @@ def bans():
 
     last_month = datetime.datetime.now().replace(day=1) - datetime.timedelta(days=1)
 
-    return render_template('bans.html', displayed_time=displayed_time,
+    return render_template('new/bans.html', displayed_time=displayed_time,
         time_offset=time_offset, last_month=last_month,
         breakin_attempts=breakin_attempts,
         bans=bans, ips=ips)
@@ -94,7 +94,7 @@ def tag_name(name):
     tag = Tag.query.filter_by(name=name).first()
 
     if tag:
-        return render_template('tag_list.html', tag=tag)
+        return render_template('new/tag_list.html', tag=tag)
     else:
         abort(404)
 
@@ -102,14 +102,14 @@ def tag_name(name):
 def categories():
     categories = Category.query.order_by('name').all()
 
-    return render_template('categories.html', categories=categories)
+    return render_template('new/categories.html', categories=categories)
 
 @app.route('/categories/<name>/')
 def category(name):
     category = Category.query.filter_by(name=name).first()
 
     if category:
-        return render_template('category.html', category=category)
+        return render_template('new/category.html', category=category)
     else:
         abort(404)
 
