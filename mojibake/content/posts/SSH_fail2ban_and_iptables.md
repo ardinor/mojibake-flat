@@ -57,7 +57,7 @@ Then finally restart fail2ban.
 
 Now that that's taken care of, let's take it one further step. We can see there's one IP (115.114.14.195, an Indian IP) that seems to have taken a likening to trying and brute forcing it's way in. Let's just ban him at the kernal firewall instead.
 
-Let's first open up the existing test rules for iptables (if you have them):
+Let's first open up the existing test rules for iptables (if you have any):
 
     sudo nano /etc/iptables.test.rules
 

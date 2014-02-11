@@ -45,7 +45,8 @@ assets.register('js_all', js)
 new_js = Bundle('new/js/jquery.min.js',
                 'new/js/skel.min.js',
                 'new/js/skel-panels.min.js',
-                'new/js/init.js',) # only for IE8 'new/js/html5shiv.js',
+                'new/js/init.js',
+                'new/js/mojibake.js') # only for IE8 'new/js/html5shiv.js',
 assets.register('new_js', new_js)
 
 new_css = Bundle('new/css/skel-noscript.css',

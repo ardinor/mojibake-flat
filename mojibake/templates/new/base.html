@@ -10,8 +10,8 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" /> -->
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu' rel='stylesheet' type='text/css'>
         <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
         {% assets "new_js" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
@@ -69,12 +69,18 @@
 
                             -->
                             <ul>
-                                <li><a href="{{ url_for('home') }}"><span class="fa fa-home">Home</span></a></li>
-                                <li><a href="{{ url_for('about') }}"><span class="fa fa-info">About</span></a></li>
-                                <li><a href="{{ url_for('posts') }}"><span class="fa fa-comment-o">Posts</span></a></li>
-                                <li><a href="{{ url_for('tags') }}"><span class="fa fa-tags">Tags</span></a></li>
-                                <li><a href="{{ url_for('archive') }}"><span class="fa fa-calendar">Archive</span></a></li>
-                                <li><a href="{{ url_for('categories') }}"><span class="fa fa-folder-open">Post Categories</span></a></li>
+                                <li><a href="{{ url_for('home') }}" id="home_tab"><span class="fa fa-home">Home</span></a></li>
+                                <li><a href="{{ url_for('about') }}" id="about_tab"><span class="fa fa-info">About</span></a></li>
+                                <li><a href="{{ url_for('posts') }}" id="posts_tab"><span class="fa fa-comment-o">Posts</span></a></li>
+                                <li><a href="{{ url_for('tags') }}" id="tags_tab"><span class="fa fa-tags">Tags</span></a></li>
+                                <li><a href="{{ url_for('archive') }}" id="archive_tab"><span class="fa fa-calendar">Archive</span></a></li>
+                                <div class="column-divider"></div>
+                                <li><a href="{{ url_for('categories') }}" id="categories_tab"><span class="fa fa-level-down"><em>Post Categories</em></span></a></li>
+                                {% for i in glbl_categories %}
+                                <li class="" id="">
+                                  <a href="{{ url_for('category', name=i.name) }}"><span class="fa fa-folder-open"><small>{{ i.name }}</small></span></a>
+                                </li>
+                                {% endfor %}
 
 
                                 <!--<li><a href="#portfolio" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Portfolio</span></a></li>

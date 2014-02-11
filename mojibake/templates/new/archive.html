@@ -1,0 +1,22 @@
+{% extends "new/base.html" %}
+
+{% block title %}Defestri - Archive{% endblock %}
+
+{% block content %}
+<section id="archive">
+    <div class="container">
+
+        <header>
+            <h2>Archive</h2>
+        </header>
+
+        {% for year in years %}
+        <a href="{{ url_for('archive_year', year=year)  }}">{{ year }}</a>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}
+
+
+

@@ -40,7 +40,7 @@ def archive():
     posts = Post.query.all()
     years = list(set([post.date.year for post in posts]))
 
-    return render_template('archive.html', years=years)
+    return render_template('new/archive.html', years=years)
 
 @app.route('/archive/<year>/')
 def archive_year(year):

@@ -14,14 +14,15 @@
 
 	body
 	{
-		background: #fff;
+		background: #212628;
+		height 100%;
 	}
 
 	body,input,textarea,select
 	{
-		font-family: 'Source Sans Pro', sans-serif;
-		font-size: 19pt;
-		font-weight: 300;
+		font-family: 'Ubuntu', sans-serif;
+		font-size: 12pt;
+		/*font-weight: 300;*/
 		line-height: 1.75em;
 		color: #888;
 		-webkit-text-stroke: 0.15px;
@@ -981,7 +982,7 @@
 		{
 			position: relative;
 			color: #fff;
-			font-weight: 600;
+			/*font-weight: 600;*/
 			font-size: 1em;
 			line-height: 1em;
 		}
@@ -1063,6 +1064,11 @@
 								color: #E27689;
 							}
 
+				#nav ul li:hover
+				{
+					background-color: #58666B;
+				}
+
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
@@ -1071,10 +1077,14 @@
 	{
 		margin-left: 375px;
 		text-align: center;
-		background-color: #dce3e2;
+		background: #212628 url('images/overlay.png');;
 		padding: 1em 0 1em 0;
 		box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
-		font-size: 0.8em;
+		font-size: 0.6em;
+
+		position: fixed;
+		width: 100%;
+		height: 100%;
 	}
 
 		#footer .copyright
@@ -1099,12 +1109,16 @@
 	#main
 	{
 		margin-left: 375px;
-		font-family: 'Lato', sans-serif;
+		font-family: 'Ubuntu', sans-serif;
 		font-size: 10pt;
 		/*font-weight: 400;*/
 		line-height: 1.75em;
 		color: #888;
+		background: #fff;
 		-webkit-text-stroke: 0.15px;
+		border-right-style: solid;
+		border-right-width: 10px;
+		border-right-color: #212628;
 	}
 
 		#main > section
@@ -1112,8 +1126,8 @@
 			margin: 0;
 			overflow: hidden;
 			padding: 3em 0 4em 0;
-			box-shadow: inset 0 10px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
-			/*text-align: center;*/
+			/*box-shadow: inset 0 10px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
+			text-align: center;*/
 			background-image: url('images/overlay.png');
 		}
 
@@ -1143,11 +1157,30 @@
 			background-color: #e8edec;
 		}
 
+/*********************************************************************************/
+/* Code blocks                                                                   */
+/*********************************************************************************/
+
 pre {
     background-color: #FAFAFA;
     line-height: 1.4em;
     margin-left: 10px;
     margin-right: 20px;
+    font-size: 1.1em;
+    font-family: 'Ubuntu Mono', sans-serif;
 }
 
+.column-divider {
+	width: 70%;
+	height: 2px;
+	border: 0;
+	background-color: #58666B;
+	margin-left: auto;
+	margin-right: 0px;
+}
 
+.post-divider {
+	height: 10px;
+	border: 0;
+	background-color: #212628;
+}

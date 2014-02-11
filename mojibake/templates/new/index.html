@@ -10,5 +10,9 @@
 
     {{ render_post(page)}}
 
+    {% if pages[-1] != page %}
+        <div class="post-divider"></div>
+    {% endif %}
+
 {% endfor %}
 {% endblock %}
