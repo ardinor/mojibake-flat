@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from urlparse import urljoin
 from flask import render_template, abort, request
 from flask_flatpages import pygments_style_defs
@@ -27,7 +29,7 @@ def home():
     # Sort pages by date
     sorted_posts = sorted(posts, reverse=True,
         key=lambda page: page.meta['date'])
-    return render_template('index.html', pages=sorted_posts[:POSTS_PER_PAGE])
+    return render_template('new/index.html', pages=sorted_posts[:POSTS_PER_PAGE])
 
 @app.route('/about/')
 def about():
@@ -73,7 +75,7 @@ def bans():
             datetime.datetime(2013, 12, 2, 21, 10, 46): '211.141.113.237',
             datetime.datetime(2013, 12, 2, 22, 50, 46): '195.60.215.30'}
 
-    ips = {'95.183.198.46': {'country':'Test', 'region': 'Test Region'},
+    ips = {'95.183.198.46': {'country':u'日本', 'region': u'大坂'},
            '211.141.113.237': {'country':'Test', 'region': 'Test Region'},
            '195.60.215.30': {'country':'Test', 'region': 'Test Region'}}
 

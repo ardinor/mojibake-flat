@@ -1,0 +1,14 @@
+{% extends "new/base.html" %}
+
+{% from 'new/_macros.html' import render_post %}
+
+{% block title %}Defestri{% endblock %}
+{% block header %} {% endblock %}
+
+{% block content %}
+{% for page in pages %}
+
+    {{ render_post(page)}}
+
+{% endfor %}
+{% endblock %}

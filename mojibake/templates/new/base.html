@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<!--
+    Prologue 1.2 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+        {% assets "new_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        {% assets "js_moment" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        <!--<script src="js/jquery.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-panels.min.js"></script>
+        <script src="js/init.js"></script> -->
+        <noscript>
+            {% assets "new_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css">
+            {% endassets %}
+            <!--<link rel="stylesheet" href="css/skel-noscript.css" />
+            <link rel="stylesheet" href="css/style.css" />
+            <link rel="stylesheet" href="css/style-wide.css" /> -->
+        </noscript>
+        <link rel="stylesheet" href="{{ url_for('pygments_css') }}" type="text/css">
+        <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+        <link href="{{ url_for('recent_feed') }}"
+          rel="alternate"
+          title="Recent Posts"
+          type="application/atom+xml">
+    </head>
+    <body>
+
+        <!-- Header -->
+            <div id="header" class="skel-panels-fixed">
+
+                <div class="top">
+
+                    <!-- Logo -->
+                        <div id="logo">
+                            <!--<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span> -->
+                            <h1 id="title">Defestri</h1>
+                            <span class="byline">Stuff</span>
+                        </div>
+
+                    <!-- Nav -->
+                        <nav id="nav">
+                            <!--
+
+                                Prologue's nav expects links in one of two formats:
+
+                                1. Hash link (scrolls to a different section within the page)
+
+                                   <li><a href="#foobar" id="foobar-link" class="skel-panels-ignoreHref"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
+
+                                2. Standard link (sends the user to another page/site)
+
+                                   <li><a href="http://foobar.tld"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
+
+                            -->
+                            <ul>
+                                <li><a href="{{ url_for('home') }}"><span class="fa fa-home">Home</span></a></li>
+                                <li><a href="{{ url_for('about') }}"><span class="fa fa-info">About</span></a></li>
+                                <li><a href="{{ url_for('posts') }}"><span class="fa fa-comment-o">Posts</span></a></li>
+                                <li><a href="{{ url_for('tags') }}"><span class="fa fa-tags">Tags</span></a></li>
+                                <li><a href="{{ url_for('archive') }}"><span class="fa fa-calendar">Archive</span></a></li>
+                                <li><a href="{{ url_for('categories') }}"><span class="fa fa-folder-open">Post Categories</span></a></li>
+
+
+                                <!--<li><a href="#portfolio" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Portfolio</span></a></li>
+                                <li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">About Me</span></a></li>
+                                <li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-envelope">Contact</span></a></li> -->
+                            </ul>
+                        </nav>
+
+                </div>
+
+                <div class="bottom">
+
+                    <!-- Social Icons -->
+                        <ul class="icons">
+                            <li><a href="https://github.com/ardinor" class="fa fa-github solo"><span>Github</span></a></li>
+                            <li><a href="#" class="fa fa-envelope solo"><span>Email</span></a></li>
+                        </ul>
+
+                </div>
+
+            </div>
+
+        <!-- Main -->
+            <div id="main">
+
+                {% block content %}{% endblock %}
+
+            </div>
+
+        <!-- Footer -->
+            <div id="footer">
+
+                <!-- Copyright -->
+                    <div class="copyright">
+                        <p>Built using <a href="https://github.com/ardinor/mojibake-flat">MØjibДĸe-Flat</a> and <a href="http://flask.pocoo.org">Flask</a></p>
+                        <!--<ul class="menu">
+                            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                            <li>Images: <a href="http://ineedchemicalx.deviantart.com">Felicia Simion</a></li>
+                        </ul> -->
+                    </div>
+
+            </div>
+
+    </body>
+</html>

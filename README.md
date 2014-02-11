@@ -36,13 +36,15 @@ When making a post, put the date as UTC for the localisation in moment.js to wor
 - Maybe use the editor like in Ghost?
 The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/showdown) to convert the markdown to HTML, and jQuery with a simple cross-multiplication of content height (editor & preview) to adjust the the scroll on the other panel. - [Source](http://www.reddit.com/r/javascript/comments/1ofhos/nodejsbased_blogging_app_ghost_has_launched_today/ccrnd6i)
 
-- Pagination?
+- Check Pagination works
 
 - Clean up unused files
 
 - ~~Are the times displayed really localised? Hm..~~ Yep!
 
-- Shadows on the bans page, this page needs a bit of a tidy up
+- ~~Shadows on the bans page, this page needs a bit of a tidy up~~ Done
+
+- Maybe move the about page and any other similar pages made in the future to .md files and have them generated too?
 
 ### CREDITS: ###
 
