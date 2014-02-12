@@ -46,13 +46,22 @@ new_js = Bundle('new/js/jquery.min.js',
                 'new/js/skel.min.js',
                 'new/js/skel-panels.min.js',
                 'new/js/init.js',
-                'new/js/mojibake.js') # only for IE8 'new/js/html5shiv.js',
+                'new/js/mojibake.js')
 assets.register('new_js', new_js)
+
+ie8_shiv = Bundle('new/js/html5shiv.js')
+assets.register('ie8_shiv', ie8_shiv)
 
 new_css = Bundle('new/css/skel-noscript.css',
                  'new/css/style.css',
                  'new/css/style-wide.css')
 assets.register('new_css', new_css)
+
+ie8_css = Bundle('new/css/ie8.css')
+assets.register('ie8_css', ie8_css)
+
+ie9_css = Bundle('new/css/ie9.css')
+assets.register('ie9_css', ie9_css)
 
 #Moment needs to be in the document head apparently
 moment = Bundle('js/moment.min.js')

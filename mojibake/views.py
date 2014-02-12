@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from urlparse import urljoin
-from flask import render_template, abort, request
+from flask import render_template, abort, request, make_response, url_for
 from flask_flatpages import pygments_style_defs
 from werkzeug.contrib.atom import AtomFeed
 
@@ -152,7 +152,7 @@ def page(path):
     # `path` is the filename of a page, without the file extension
     # e.g. "first-post"
     page = pages.get_or_404(path)
-    template = page.meta.get('template', 'post.html')
+    template = page.meta.get('template', 'new/post.html')
     return render_template(template, page=page)
 
 @app.route('/pygments.css')
@@ -173,6 +173,36 @@ def recent_feed():
                  url=make_external(post.path),
                  updated=page.meta['date'])
     return feed.get_response(), 200, {'Content-Type': 'application/atom+xml; charset=utf-8'}
+
+#Adapted from http://flask.pocoo.org/snippets/108/
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    map_pages = []
+    ten_days_ago=(datetime.datetime.now() - datetime.timedelta(days=10)).date().isoformat()
+    for rule in app.url_map.iter_rules():
+      if "GET" in rule.methods and len(rule.arguments) == 0:
+          map_pages.append([rule.rule,ten_days_ago])
+
+    tags = Tag.query.all()
+    for tag in tags:
+        url = url_for('tag_name', name=tag.name)
+        map_pages.append([url, ten_days_ago])
+
+    categories = Category.query.all()
+    for category in categories:
+        url = url_for('category', name=category.name)
+        map_pages.append([url, ten_days_ago])
+
+    posts = Post.query.all()
+    for post in posts:
+        url = '/' + post.path + '/'
+        map_pages.append([url, ten_days_ago])
+
+    sitemap_xml = render_template('new/sitemap_template.xml', pages=map_pages)
+    response= make_response(sitemap_xml)
+    response.headers["Content-Type"] = "application/xml"
+
+    return response
 
 
 @app.errorhandler(404)
