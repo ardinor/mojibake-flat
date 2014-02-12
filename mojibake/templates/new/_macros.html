@@ -1,33 +1,29 @@
 {% macro render_pagination(pagination, endpoint) %}
-  <div class="text-center">
-    <ul class="pagination pagination-sm">
+<nav class="pagination">
 
-        {% if pagination.has_prev %}
-        <li><a href="{{ url_for(endpoint, page=pagination.prev_num) }}">&laquo;</a></li>
+    {% if pagination.has_prev %}
+        <a class="button" href="{{ url_for(endpoint, page=pagination.prev_num) }}">&laquo;</a>
+    {% else %}
+        <a class="button disabled" href="#">&laquo;</a>
+    {% endif %}
+
+    {% for page in pagination.iter_pages() %}
+      {% if page %}
+        {% if page != pagination.page %}
+          <a class="button" href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
         {% else %}
-        <li class="disabled"><a href="{{ url_for(endpoint, page=pagination.next_num) }}">&laquo;</a></li>
+            <a class="button active" href="">{{ page }}</a>
         {% endif %}
+      {% endif %}
+    {% endfor %}
 
-        {% for page in pagination.iter_pages() %}
-          {% if page %}
-            {% if page != pagination.page %}
-              <li><a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a></li>
-            {% else %}
-              <li>
-                <a class="active" href="">{{ page }} <span class="sr-only">(current)</span></a>
-              </li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
+    {% if pagination.has_next %}
+        <a class="button" href="{{ url_for(endpoint, page=pagination.next_num) }}">&raquo;</a>
+    {% else %}
+        <a class="button disabled" href="">&raquo;</a>
+    {% endif %}
 
-        {% if pagination.has_next %}
-        <li><a href="{{ url_for(endpoint, page=pagination.next_num) }}">&raquo;</a></li>
-        {% else %}
-        <li class="disabled"><a href="{{ url_for(endpoint, page=page) }}">&raquo;</a></li>
-        {% endif %}
-
-    </ul>
-  </div>
+</nav>
 {% endmacro %}
 
 {% macro render_post(page) %}

@@ -29,7 +29,13 @@ def home():
     # Sort pages by date
     sorted_posts = sorted(posts, reverse=True,
         key=lambda page: page.meta['date'])
-    return render_template('new/index.html', pages=sorted_posts[:POSTS_PER_PAGE])
+    if len(sorted_posts) > POSTS_PER_PAGE:
+        show_more = True
+    else:
+        show_more = False
+    return render_template('new/index.html', pages=sorted_posts[:POSTS_PER_PAGE],
+                           show_more=show_more)
+
 
 @app.route('/about/')
 def about():
@@ -135,7 +141,7 @@ def posts(page=1):
     for i in posts.items:
         found_pages.append(pages.get(i.path))
     if found_pages:
-        return render_template('posts.html', pages=found_pages,
+        return render_template('new/posts.html', pages=found_pages,
             pagination_item=posts)
     else:
         abort(404)

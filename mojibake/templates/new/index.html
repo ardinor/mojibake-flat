@@ -14,4 +14,11 @@
     {% endif %}
 
 {% endfor %}
+
+{% if show_more %}
+<nav class="pagination">
+    <a class="button" href="{{ url_for('posts', page=2) }}">Show more &raquo;</a>
+</nav>
+{% endif %}
+
 {% endblock %}
