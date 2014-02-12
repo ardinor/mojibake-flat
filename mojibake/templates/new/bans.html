@@ -24,19 +24,19 @@
                     <th>Location</th>
                 </tr>
             </thead>
+            <tfoot class="row-total">
+                <td>Total:</td>
+                <td colspan="3">{{ breakin_attempts|length }}</td>
+            </tfoot>
             <tbody>
                 {% for attempt, details in breakin_attempts.iteritems() %}
-                <tr class="{{ loop.cycle('odd', 'even')}}">
+                <tr>
                     <td>{{ attempt }}</td>
                     <td>{{ details[1] }}</td>
                     <td class="ip-column">{{ details[0] }}</td>
                     <td>{{ ', '.join(ips[details[0]].values()) }}</td>
                 </tr>
                 {% endfor %}
-                <tr class="row-total">
-                    <td>Total:</td>
-                    <td colspan="3">{{ breakin_attempts|length }}</td>
-                </tr>
             </tbody>
         </table>
 
@@ -49,6 +49,10 @@
                     <th>Location</th>
                 </tr>
             </thead>
+            <tfoot class="row-total">
+                <td>Total:</td>
+                <td colspan="2">{{ bans|length }}</td>
+            </tfoot>
             <tbody>
                 {% for ban_date, ip_add in bans.iteritems() %}
                 <tr class="{{ loop.cycle('odd', 'even')}}">
@@ -57,10 +61,7 @@
                     <td>{{ ', '.join(ips[ip_add].values()) }}</td>
                 </tr>
                 {% endfor %}
-                <tr class="row-total">
-                    <td>Total:</td>
-                    <td colspan="2">{{ bans|length }}</td>
-                </tr>
+
             </tbody>
         </table>
 

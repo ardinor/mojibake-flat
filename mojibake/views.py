@@ -35,6 +35,10 @@ def home():
 def about():
     return render_template('new/about.html')
 
+@app.route('/contact/')
+def contact():
+    return render_template('new/contact.html')
+
 @app.route('/archive/')
 def archive():
     posts = Post.query.all()

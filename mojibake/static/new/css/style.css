@@ -425,10 +425,17 @@
 				table.default tfoot
 				{
 					background: #eee;
+					color: black;
 				}
 
 				table.default tbody
 				{
+				}
+
+				table.default tr:hover
+				{
+					background: #444 !important;
+					color: #fff;
 				}
 
 	/* Buttons */
