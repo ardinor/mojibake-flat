@@ -36,7 +36,7 @@ When making a post, put the date as UTC for the localisation in moment.js to wor
 - Maybe use the editor like in Ghost?
 The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/showdown) to convert the markdown to HTML, and jQuery with a simple cross-multiplication of content height (editor & preview) to adjust the the scroll on the other panel. - [Source](http://www.reddit.com/r/javascript/comments/1ofhos/nodejsbased_blogging_app_ghost_has_launched_today/ccrnd6i)
 
-- Check Pagination works
+- ~~Check Pagination works~~ Looks good
 
 - Clean up unused files
 
@@ -49,3 +49,5 @@ The [Editor](http://codemirror.net/) uses [this](https://github.com/coreyti/show
 ### CREDITS: ###
 
 Using examples from [here](http://www.stevenloria.com/hosting-static-flask-sites-for-free-on-github-pages/) and [here](http://www.jamesharding.ca/posts/simple-static-markdown-blog-in-flask/)
+
+HTML 5 Template from [html5up](http://html5up.net/prologue/)
