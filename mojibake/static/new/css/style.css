@@ -1069,6 +1069,12 @@
 					background-color: #58666B;
 				}
 
+		#nav h4
+		{
+			color: #DDDDDD;
+			display: inline;
+		}
+
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
@@ -1201,27 +1207,3 @@ pre {
 	background-color: #212628;
 }
 
-.bans table {
-	width: 75%;
-	table-layout: fixed;
-}
-
-.bans td {
-	padding-bottom: 0.5rem;
-	padding-top: 0.5rem;
-}
-
-.bans th {
-	text-align: left;
-	border-bottom-style: solid;
-	border-bottom: 1px solid black;
-}
-
-.bans tr.even {
-	background-color: #EFF0F0;
-}
-
-.bans tr:hover {
-	background-color: #C5C8C9;
-	color: #A82B35;
-}

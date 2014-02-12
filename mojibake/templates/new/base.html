@@ -74,8 +74,10 @@
                                 <li><a href="{{ url_for('posts') }}" id="posts_tab"><span class="fa fa-comment-o">Posts</span></a></li>
                                 <li><a href="{{ url_for('tags') }}" id="tags_tab"><span class="fa fa-tags">Tags</span></a></li>
                                 <li><a href="{{ url_for('archive') }}" id="archive_tab"><span class="fa fa-calendar">Archive</span></a></li>
-                                <div class="column-divider"></div>
-                                <li><a href="{{ url_for('categories') }}" id="categories_tab"><span class="fa fa-level-down"><em>Post Categories</em></span></a></li>
+                            </ul>
+                            <ul>
+
+                                <li><a href="{{ url_for('categories') }}" id="categories_tab"><span class="fa fa-level-down"><h4>Post Categories</h4></span></a></li>
                                 {% for i in glbl_categories %}
                                 <li class="" id="">
                                   <a href="{{ url_for('category', name=i.name) }}"><span class="fa fa-folder-open"><small>{{ i.name }}</small></span></a>
