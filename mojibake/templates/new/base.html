@@ -11,7 +11,7 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" /> -->
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu' rel='stylesheet' type='text/css'>
         <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
         {% assets "new_js" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
@@ -79,8 +79,8 @@
 
                                 <li><a href="{{ url_for('categories') }}" id="categories_tab"><span class="fa fa-level-down"><h4>Post Categories</h4></span></a></li>
                                 {% for i in glbl_categories %}
-                                <li class="" id="">
-                                  <a href="{{ url_for('category', name=i.name) }}"><span class="fa fa-folder-open"><small>{{ i.name }}</small></span></a>
+                                <li>
+                                  <a href="{{ url_for('category', name=i.name) }}" id="{{ i.name }}_tab"><span class="fa fa-folder-open">{{ i.name }}</span></a>
                                 </li>
                                 {% endfor %}
 
@@ -98,7 +98,7 @@
                     <!-- Social Icons -->
                         <ul class="icons">
                             <li><a href="https://github.com/ardinor" class="fa fa-github solo"><span>Github</span></a></li>
-                            <li><a href="{{ url_for('contact') }}" class="fa fa-envelope solo"><span>Email</span></a></li>
+                            <li id="contact_tab"><a href="{{ url_for('contact') }}" class="fa fa-envelope solo"><span>Email</span></a></li>
                             <li><a href="{{ url_for('recent_feed') }}" class="fa fa-rss solo"><span>RSS</span></a></li>
                         </ul>
 
