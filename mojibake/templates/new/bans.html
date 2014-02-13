@@ -20,7 +20,7 @@
                 <tr>
                     <th>When</th>
                     <th>Username</th>
-                    <th class="ip-column">IP</th>
+                    <th>IP</th>
                     <th>Location</th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ attempt }}</td>
                     <td>{{ details[1] }}</td>
-                    <td class="ip-column">{{ details[0] }}</td>
+                    <td>{{ details[0] }}</td>
                     <td>{{ ', '.join(ips[details[0]].values()) }}</td>
                 </tr>
                 {% endfor %}

@@ -44,11 +44,6 @@
 							width: '3.5em',
 							height: '2.25em',
 							html: '<div data-action="togglePanel" data-args="sidePanel" class="toggle"></div>'
-						},
-						footer: {
-							position: 'bottom-right',
-							width: "80%",
-							height: 40,
 						}
 					}
 				}

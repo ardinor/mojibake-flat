@@ -4,8 +4,6 @@ from urlparse import urljoin
 from flask import render_template, abort, request, make_response, url_for
 from flask_flatpages import pygments_style_defs
 from werkzeug.contrib.atom import AtomFeed
-
-#
 import datetime
 
 from app import app, pages, freezer, db
@@ -81,9 +79,9 @@ def bans():
                         datetime.datetime(2013, 12, 2, 22, 48, 46): ('195.60.215.30', 'oracle')
                         }
 
-    bans = {datetime.datetime(2013, 12, 2, 21, 05, 46): '95.183.198.46',
+    bans = {datetime.datetime(2013, 12, 9, 21, 05, 46): '95.183.198.46',
             datetime.datetime(2013, 12, 2, 21, 10, 46): '211.141.113.237',
-            datetime.datetime(2013, 12, 2, 22, 50, 46): '195.60.215.30'}
+            datetime.datetime(2013, 12, 12, 22, 50, 46): '195.60.215.30'}
 
     ips = {'95.183.198.46': {'country':u'日本', 'region': u'大坂'},
            '211.141.113.237': {'country':'Test', 'region': 'Test Region'},
@@ -141,7 +139,7 @@ def posts(page=1):
     for i in posts.items:
         found_pages.append(pages.get(i.path))
     if found_pages:
-        return render_template('new/posts.html', pages=found_pages,
+        return render_template('posts.html', pages=found_pages,
             pagination_item=posts)
     else:
         abort(404)
