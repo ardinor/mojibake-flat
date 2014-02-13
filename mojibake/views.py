@@ -73,10 +73,10 @@ def bans():
     #just fill it with filler information, this template is made elsewhere
 
     breakin_attempts = {datetime.datetime(2013, 12, 2, 20, 31, 46): ('95.183.198.46', 'nagios'),
-                        datetime.datetime(2013, 12, 2, 20, 56, 46): ('95.183.198.46', 'postgres'),
-                        datetime.datetime(2013, 12, 2, 21, 04, 46): ('95.183.198.46', 'igor'),
-                        datetime.datetime(2013, 12, 2, 22, 31, 46): ('211.141.113.237', 'ftpuser'),
-                        datetime.datetime(2013, 12, 2, 22, 48, 46): ('195.60.215.30', 'oracle')
+                        datetime.datetime(2013, 12, 5, 20, 56, 46): ('95.183.198.46', 'postgres'),
+                        datetime.datetime(2013, 12, 8, 21, 04, 46): ('95.183.198.46', 'igor'),
+                        datetime.datetime(2013, 12, 12, 22, 31, 46): ('211.141.113.237', 'ftpuser'),
+                        datetime.datetime(2013, 12, 25, 22, 48, 46): ('195.60.215.30', 'oracle')
                         }
 
     bans = {datetime.datetime(2013, 12, 9, 21, 05, 46): '95.183.198.46',
@@ -90,12 +90,16 @@ def bans():
     displayed_time = 'CET'
     time_offset = '+1'
 
+    sorted_bans = sorted(bans.keys())
+    sorted_breakins = sorted(breakin_attempts.keys())
+
     last_month = datetime.datetime.now().replace(day=1) - datetime.timedelta(days=1)
 
     return render_template('new/bans.html', displayed_time=displayed_time,
         time_offset=time_offset, last_month=last_month,
         breakin_attempts=breakin_attempts,
-        bans=bans, ips=ips)
+        bans=bans, ips=ips, sorted_bans=sorted_bans,
+        sorted_breakins=sorted_breakins)
 
 @app.route('/tags/<name>/')
 def tag_name(name):
