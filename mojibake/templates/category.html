@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 
 {% block title %}Defestri - {{ category.name }}{% endblock %}
-{% block header %} - Categories{% endblock %}
 
 {% block content %}
-    <div class="panel panel-default panel-shadow">
-        <div class="panel-body">
-            <h3 class="text-center">Posts under '{{ category.name }}'</h3>
+<section class="categories">
+    <div class="container">
+
+        <header>
+            <h2>Posts under '{{ category.name }}'</h2>
+        </header>
+
             {% for i in category.posts %}
             <p>
                 <h3><a href="{{ url_for('page', path='/{}'.format(i.path)) }}">{{ i.title }}</a></h3>Posted on: {{moment_js(i.date).format('LLLL')}}
             </p>
             {% endfor %}
-        </div>
+
     </div>
+</section>
 {% endblock %}
+

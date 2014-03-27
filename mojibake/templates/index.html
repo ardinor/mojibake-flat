@@ -3,12 +3,22 @@
 {% from '_macros.html' import render_post %}
 
 {% block title %}Defestri{% endblock %}
-{% block header %} {% endblock %}
 
 {% block content %}
 {% for page in pages %}
 
     {{ render_post(page)}}
 
+    {% if pages[-1] != page %}
+        <div class="post-divider"></div>
+    {% endif %}
+
 {% endfor %}
+
+{% if show_more %}
+<nav class="pagination">
+    <a class="button" href="{{ url_for('posts', page=2) }}">Show more &raquo;</a>
+</nav>
+{% endif %}
+
 {% endblock %}

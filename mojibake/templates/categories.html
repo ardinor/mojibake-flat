@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}Defestri - Categories{% endblock %}
-{% block header %} - Categories{% endblock %}
 
 {% block content %}
-    <div class="panel panel-default panel-shadow">
-        <div class="panel-body">
+<section class="categories">
+    <div class="container">
+
+        <header>
+            <h2>Categories</h2>
+        </header>
+
             {% for i in categories %}
             <h3><a href="{{ url_for('category', name=i.name) }}">{{ i.name }} ({{ i.posts.count() }} posts)</a></h3>
             {% endfor %}
-        </div>
+
     </div>
+</section>
 {% endblock %}

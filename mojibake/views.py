@@ -31,24 +31,24 @@ def home():
         show_more = True
     else:
         show_more = False
-    return render_template('new/index.html', pages=sorted_posts[:POSTS_PER_PAGE],
+    return render_template('index.html', pages=sorted_posts[:POSTS_PER_PAGE],
                            show_more=show_more)
 
 
 @app.route('/about/')
 def about():
-    return render_template('new/about.html')
+    return render_template('about.html')
 
 @app.route('/contact/')
 def contact():
-    return render_template('new/contact.html')
+    return render_template('contact.html')
 
 @app.route('/archive/')
 def archive():
     posts = Post.query.all()
     years = list(set([post.date.year for post in posts]))
 
-    return render_template('new/archive.html', years=years)
+    return render_template('archive.html', years=years)
 
 @app.route('/archive/<year>/')
 def archive_year(year):
@@ -56,7 +56,7 @@ def archive_year(year):
             params(year=year).order_by('-date').all()
 
     if year_posts:
-        return render_template('new/archive_year.html', year=year,
+        return render_template('archive_year.html', year=year,
             posts=year_posts)
     else:
         abort(404)
@@ -65,7 +65,7 @@ def archive_year(year):
 def tags():
     tags = Tag.query.order_by('name').all()
 
-    return render_template('new/tags.html', tags=tags)
+    return render_template('tags.html', tags=tags)
 
 @app.route('/bans/')
 def bans():
@@ -95,7 +95,7 @@ def bans():
 
     last_month = datetime.datetime.now().replace(day=1) - datetime.timedelta(days=1)
 
-    return render_template('new/bans.html', displayed_time=displayed_time,
+    return render_template('bans.html', displayed_time=displayed_time,
         time_offset=time_offset, last_month=last_month,
         breakin_attempts=breakin_attempts,
         bans=bans, ips=ips, sorted_bans=sorted_bans,
@@ -106,7 +106,7 @@ def tag_name(name):
     tag = Tag.query.filter_by(name=name).first()
 
     if tag:
-        return render_template('new/tag_list.html', tag=tag)
+        return render_template('tag_list.html', tag=tag)
     else:
         abort(404)
 
@@ -114,14 +114,14 @@ def tag_name(name):
 def categories():
     categories = Category.query.order_by('name').all()
 
-    return render_template('new/categories.html', categories=categories)
+    return render_template('categories.html', categories=categories)
 
 @app.route('/categories/<name>/')
 def category(name):
     category = Category.query.filter_by(name=name).first()
 
     if category:
-        return render_template('new/category.html', category=category)
+        return render_template('category.html', category=category)
     else:
         abort(404)
 
@@ -143,7 +143,7 @@ def posts(page=1):
     for i in posts.items:
         found_pages.append(pages.get(i.path))
     if found_pages:
-        return render_template('new/posts.html', pages=found_pages,
+        return render_template('posts.html', pages=found_pages,
             pagination_item=posts)
     else:
         abort(404)
@@ -154,7 +154,7 @@ def page(path):
     # `path` is the filename of a page, without the file extension
     # e.g. "first-post"
     page = pages.get_or_404(path)
-    template = page.meta.get('template', 'new/post.html')
+    template = page.meta.get('template', 'post.html')
     return render_template(template, page=page)
 
 @app.route('/pygments.css')
@@ -200,7 +200,7 @@ def sitemap():
         url = '/' + post.path + '/'
         map_pages.append([url, ten_days_ago])
 
-    sitemap_xml = render_template('new/sitemap_template.xml', pages=map_pages)
+    sitemap_xml = render_template('sitemap_template.xml', pages=map_pages)
     response= make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
 
@@ -209,4 +209,4 @@ def sitemap():
 
 @app.errorhandler(404)
 def internal_error(error):
-    return render_template('new/404.html'), 404
+    return render_template('404.html'), 404
