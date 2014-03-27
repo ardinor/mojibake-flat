@@ -32,15 +32,15 @@ app.jinja_env.globals['glbl_categories'] = models.Category.query.order_by('name'
 assets = Environment(app)
 app.config['ASSETS_DEBUG'] = True
 
-css = Bundle('css/bootstrap.min.css',
-             'css/mojibake.css')
-assets.register('css_all', css)
+# css = Bundle('css/bootstrap.min.css',
+#              'css/mojibake.css')
+# assets.register('css_all', css)
 
-js = Bundle('js/jquery-2.0.3.min.js',
-            'js/bootstrap.min.js',
-            'js/mojibake.js',
-            filters='rjsmin', output='gen/packed.js')
-assets.register('js_all', js)
+# js = Bundle('js/jquery-2.0.3.min.js',
+#             'js/bootstrap.min.js',
+#             'js/mojibake.js',
+#             filters='rjsmin', output='gen/packed.js')
+# assets.register('js_all', js)
 
 new_js = Bundle('new/js/jquery.min.js',
                 'new/js/skel.min.js',

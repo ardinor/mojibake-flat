@@ -143,7 +143,7 @@ def posts(page=1):
     for i in posts.items:
         found_pages.append(pages.get(i.path))
     if found_pages:
-        return render_template('posts.html', pages=found_pages,
+        return render_template('new/posts.html', pages=found_pages,
             pagination_item=posts)
     else:
         abort(404)
