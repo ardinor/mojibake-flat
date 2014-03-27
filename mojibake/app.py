@@ -42,25 +42,25 @@ app.config['ASSETS_DEBUG'] = True
 #             filters='rjsmin', output='gen/packed.js')
 # assets.register('js_all', js)
 
-new_js = Bundle('new/js/jquery.min.js',
-                'new/js/skel.min.js',
-                'new/js/skel-panels.min.js',
-                'new/js/init.js',
-                'new/js/mojibake.js')
+new_js = Bundle('js/jquery.min.js',
+                'js/skel.min.js',
+                'js/skel-panels.min.js',
+                'js/init.js',
+                'js/mojibake.js')
 assets.register('new_js', new_js)
 
-ie8_shiv = Bundle('new/js/html5shiv.js')
+ie8_shiv = Bundle('js/html5shiv.js')
 assets.register('ie8_shiv', ie8_shiv)
 
-new_css = Bundle('new/css/skel-noscript.css',
-                 'new/css/style.css',
-                 'new/css/style-wide.css')
+new_css = Bundle('css/skel-noscript.css',
+                 'css/style.css',
+                 'css/style-wide.css')
 assets.register('new_css', new_css)
 
-ie8_css = Bundle('new/css/ie8.css')
+ie8_css = Bundle('css/ie8.css')
 assets.register('ie8_css', ie8_css)
 
-ie9_css = Bundle('new/css/ie9.css')
+ie9_css = Bundle('css/ie9.css')
 assets.register('ie9_css', ie9_css)
 
 #Moment needs to be in the document head apparently
